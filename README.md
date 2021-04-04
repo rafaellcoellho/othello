@@ -1,6 +1,6 @@
 # Othello
 
-Implementação do jogo Othelo em Java usando a biblioteca libGDX.
+Implementação do jogo othello usando a biblioteca libGDX.
 
 <p align="center">
 	<a href="">
