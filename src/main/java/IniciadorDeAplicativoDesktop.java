@@ -1,7 +1,7 @@
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 
-public class DesktopLauncher {
+public class IniciadorDeAplicativoDesktop {
 
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration configuracaoGeral = new Lwjgl3ApplicationConfiguration();
