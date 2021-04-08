@@ -1,6 +1,6 @@
 import com.badlogic.gdx.graphics.Color;
 
-public enum PaletaDeCores{
+public enum CoresPadrao {
 
     FUNDO(0.192f, 0.180f, 0.168f), //#312e2b
     QUADRADO(0.462f, 0.588f, 0.337f), //#769656
@@ -8,7 +8,7 @@ public enum PaletaDeCores{
 
     public Color cor;
 
-    PaletaDeCores(float r, float g, float b) {
+    CoresPadrao(float r, float g, float b) {
         cor = new Color(r, g, b, 1);
     }
 }
