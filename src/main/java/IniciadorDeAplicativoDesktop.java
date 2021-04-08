@@ -8,7 +8,8 @@ public class IniciadorDeAplicativoDesktop {
 
         configuracaoGeral.setIdleFPS(60);
         configuracaoGeral.setTitle("Othello");
-        configuracaoGeral.setWindowedMode(960, 640);
+        configuracaoGeral.setWindowedMode(Constantes.LARGURA_JANELA, Constantes.ALTURA_JANELA);
+        configuracaoGeral.setResizable(false);
 
         new Lwjgl3Application(new Othello(), configuracaoGeral);
     }
