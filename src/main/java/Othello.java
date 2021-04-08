@@ -1,6 +1,6 @@
 import com.badlogic.gdx.Game;
 
-public class Boot extends Game {
+public class Othello extends Game {
     @Override
     public void create() {}
 }

@@ -10,6 +10,6 @@ public class IniciadorDeAplicativoDesktop {
         configuracaoGeral.setTitle("Othello");
         configuracaoGeral.setWindowedMode(960, 640);
 
-        new Lwjgl3Application(new Boot(), configuracaoGeral);
+        new Lwjgl3Application(new Othello(), configuracaoGeral);
     }
 }
