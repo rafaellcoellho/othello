@@ -15,3 +15,4 @@ Implementação do jogo othello usando a biblioteca libGDX.
 ## Referências 
 
 + [FBO - Federação Brasileira de Othello](http://www.othellobrasil.com.br/)
++ [Regras](https://www.youtube.com/watch?v=Ol3Id7xYsY4)
