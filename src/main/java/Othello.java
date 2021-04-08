@@ -22,5 +22,6 @@ public class Othello extends Game {
     @Override
     public void dispose () {
         fonte.dispose();
+        processamentoEmLote.dispose();
     }
 }
