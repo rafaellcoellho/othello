@@ -2,15 +2,20 @@ package graficos;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class TelaDoTabuleiro implements Screen {
 
     Othello jogo;
     OrthographicCamera camera;
+    Tabuleiro tabuleiro;
+    Chat chat;
 
     public TelaDoTabuleiro(Othello jogo) {
         this.jogo = jogo;
+        tabuleiro = new Tabuleiro(jogo, 30, 112);
+        chat = new Chat(jogo, 692, 30);
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Constantes.LARGURA_JANELA, Constantes.ALTURA_JANELA);
@@ -21,9 +26,18 @@ public class TelaDoTabuleiro implements Screen {
         ScreenUtils.clear(CoresPadrao.FUNDO.cor);
 
         camera.update();
-        jogo.processamentoEmLote.begin();
+
+        jogo.processamentoEmLoteSprites.begin();
         // Fazer algo
-        jogo.processamentoEmLote.end();
+        jogo.processamentoEmLoteSprites.end();
+
+        jogo.processamentoEmLoteFormas.begin(ShapeRenderer.ShapeType.Filled);
+        tabuleiro.desenharTabuleiro();
+        tabuleiro.desenharBotaoPassarTurno();
+        tabuleiro.desenharBotaoDesistir();
+        chat.desenharChat();
+        jogo.processamentoEmLoteFormas.end();
+
     }
 
     @Override
