@@ -36,8 +36,8 @@ public class Tabuleiro {
 
     public void desenharTabuleiro() {
         // Obrigatoriamente estando dentro de processamento em lote
-        for (int linha = 0; linha < 8; linha++ ) {
-            for (int coluna = 0; coluna < 8; coluna++ ) {
+        for (int linha = 0; linha < 8; linha++) {
+            for (int coluna = 0; coluna < 8; coluna++) {
                 float x = xInicial + (linha*LADO_QUADRADO);
                 float y = yInicial + (coluna*LADO_QUADRADO);
                 jogo.processamentoEmLoteFormas.setColor(corDoQuadrado(linha,coluna));
