@@ -17,7 +17,7 @@ public class Tabuleiro {
 
     public void desenharTabuleiro() {
         // Obrigatoriamente estando dentro de processamento em lote
-        jogo.processamentoEmLoteFormas.setColor(CoresPadrao.QUADRADO.cor);
+        jogo.processamentoEmLoteFormas.setColor(CoresPadrao.QUADRADO_ESCURO.cor);
         jogo.processamentoEmLoteFormas.rect(xInicial, yInicial, LADO_QUADRADO, LADO_QUADRADO);
     }
 
@@ -36,7 +36,7 @@ public class Tabuleiro {
         float margemEntreBotoes = 10;
         float xInicialBotao = xInicial + ((LADO_QUADRADO*8) - (2*LARGURA_BOTAO) - margemEntreBotoes);
         float yInicialBotao = yInicial - (margemTopo + ALTURA_BOTAO);
-        
+
         // Obrigatoriamente estando dentro de processamento em lote
         jogo.processamentoEmLoteFormas.setColor(CoresPadrao.BOTAO_DESISTIR.cor);
         jogo.processamentoEmLoteFormas.rect(xInicialBotao, yInicialBotao, LARGURA_BOTAO, ALTURA_BOTAO);
