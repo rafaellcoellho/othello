@@ -2,7 +2,7 @@ package graficos;
 
 public class Tabuleiro {
 
-    final static private float LADO_QUADRADO = 632; //79
+    final static private float LADO_QUADRADO = 79;
     final static private float ALTURA_BOTAO = 67;
     final static private float LARGURA_BOTAO = 200;
     final private float xInicial;
@@ -23,8 +23,9 @@ public class Tabuleiro {
 
     public void desenharBotaoPassarTurno() {
         float margemTopo = 15;
-        float xInicialBotao = xInicial + (LADO_QUADRADO - LARGURA_BOTAO);
+        float xInicialBotao = xInicial + ((LADO_QUADRADO*8) - LARGURA_BOTAO);
         float yInicialBotao = yInicial - (margemTopo + ALTURA_BOTAO);
+
         // Obrigatoriamente estando dentro de processamento em lote
         jogo.processamentoEmLoteFormas.setColor(CoresPadrao.BOTAO_PASSAR_TURNO.cor);
         jogo.processamentoEmLoteFormas.rect(xInicialBotao, yInicialBotao, LARGURA_BOTAO, ALTURA_BOTAO);
@@ -33,8 +34,9 @@ public class Tabuleiro {
     public void desenharBotaoDesistir() {
         float margemTopo = 15;
         float margemEntreBotoes = 10;
-        float xInicialBotao = xInicial + (LADO_QUADRADO - (2*LARGURA_BOTAO) - margemEntreBotoes);
+        float xInicialBotao = xInicial + ((LADO_QUADRADO*8) - (2*LARGURA_BOTAO) - margemEntreBotoes);
         float yInicialBotao = yInicial - (margemTopo + ALTURA_BOTAO);
+        
         // Obrigatoriamente estando dentro de processamento em lote
         jogo.processamentoEmLoteFormas.setColor(CoresPadrao.BOTAO_DESISTIR.cor);
         jogo.processamentoEmLoteFormas.rect(xInicialBotao, yInicialBotao, LARGURA_BOTAO, ALTURA_BOTAO);
