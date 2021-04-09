@@ -1,5 +1,9 @@
 package graficos;
 
+import com.badlogic.gdx.graphics.Color;
+
+import java.util.List;
+
 public class Tabuleiro {
 
     final static private float LADO_QUADRADO = 79;
@@ -15,10 +19,31 @@ public class Tabuleiro {
         this.yInicial = yInicial;
     }
 
+    static Color corDoQuadrado (Integer linha, Integer coluna) {
+        List<Integer> linhasIniciandoComQuadradoEscuro = List.of(0, 2, 4, 6);
+        boolean colunaEhPar = (coluna % 2) == 0;
+
+        if (linhasIniciandoComQuadradoEscuro.contains(linha)) {
+            return colunaEhPar
+                    ? CoresPadrao.QUADRADO_ESCURO.cor
+                    : CoresPadrao.QUADRADO_CLARO.cor;
+        }
+
+        return colunaEhPar
+                ? CoresPadrao.QUADRADO_CLARO.cor
+                : CoresPadrao.QUADRADO_ESCURO.cor;
+    }
+
     public void desenharTabuleiro() {
         // Obrigatoriamente estando dentro de processamento em lote
-        jogo.processamentoEmLoteFormas.setColor(CoresPadrao.QUADRADO_ESCURO.cor);
-        jogo.processamentoEmLoteFormas.rect(xInicial, yInicial, LADO_QUADRADO, LADO_QUADRADO);
+        for (int linha = 0; linha < 8; linha++ ) {
+            for (int coluna = 0; coluna < 8; coluna++ ) {
+                float x = xInicial + (linha*LADO_QUADRADO);
+                float y = yInicial + (coluna*LADO_QUADRADO);
+                jogo.processamentoEmLoteFormas.setColor(corDoQuadrado(linha,coluna));
+                jogo.processamentoEmLoteFormas.rect(x, y, LADO_QUADRADO, LADO_QUADRADO);
+            }
+        }
     }
 
     public void desenharBotaoPassarTurno() {
