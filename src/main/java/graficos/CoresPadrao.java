@@ -1,3 +1,5 @@
+package graficos;
+
 import com.badlogic.gdx.graphics.Color;
 
 public enum CoresPadrao {

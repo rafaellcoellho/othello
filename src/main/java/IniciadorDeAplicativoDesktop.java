@@ -1,6 +1,9 @@
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 
+import graficos.Constantes;
+import graficos.Othello;
+
 public class IniciadorDeAplicativoDesktop {
 
     public static void main(String[] args) {
