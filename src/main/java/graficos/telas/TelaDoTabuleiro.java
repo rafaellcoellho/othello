@@ -1,12 +1,12 @@
 package graficos.telas;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.ScreenUtils;
 import graficos.*;
 
-public class TelaDoTabuleiro implements Screen {
+public class TelaDoTabuleiro extends ScreenAdapter {
 
   Othello jogo;
   OrthographicCamera camera;
@@ -23,22 +23,4 @@ public class TelaDoTabuleiro implements Screen {
     ScreenUtils.clear(PaletaDeCores.PRETO.cor);
     camera.update();
   }
-
-  @Override
-  public void resize(int largura, int altura) {}
-
-  @Override
-  public void show() {}
-
-  @Override
-  public void hide() {}
-
-  @Override
-  public void pause() {}
-
-  @Override
-  public void resume() {}
-
-  @Override
-  public void dispose() {}
 }
