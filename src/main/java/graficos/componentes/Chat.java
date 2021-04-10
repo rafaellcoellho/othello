@@ -1,4 +1,7 @@
-package graficos;
+package graficos.componentes;
+
+import graficos.CoresPadrao;
+import graficos.Othello;
 
 public class Chat {
 
@@ -8,7 +11,7 @@ public class Chat {
   private final float yInicial;
   private final Othello jogo;
 
-  Chat(Othello jogo, float xInicial, float yInicial) {
+  public Chat(Othello jogo, float xInicial, float yInicial) {
     this.jogo = jogo;
     this.xInicial = xInicial;
     this.yInicial = yInicial;

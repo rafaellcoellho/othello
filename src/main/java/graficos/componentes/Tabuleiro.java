@@ -1,6 +1,8 @@
-package graficos;
+package graficos.componentes;
 
 import com.badlogic.gdx.graphics.Color;
+import graficos.CoresPadrao;
+import graficos.Othello;
 
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class Tabuleiro {
   private final float yInicial;
   private final Othello jogo;
 
-  Tabuleiro(Othello jogo, float xInicial, float yInicial) {
+  public Tabuleiro(Othello jogo, float xInicial, float yInicial) {
     this.jogo = jogo;
     this.xInicial = xInicial;
     this.yInicial = yInicial;

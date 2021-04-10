@@ -1,9 +1,13 @@
-package graficos;
+package graficos.telas;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
+import graficos.*;
+import graficos.componentes.Chat;
+import graficos.componentes.Tabuleiro;
 
 public class TelaDoTabuleiro implements Screen {
 
@@ -18,7 +22,7 @@ public class TelaDoTabuleiro implements Screen {
     chat = new Chat(jogo, 692, 30);
 
     camera = new OrthographicCamera();
-    camera.setToOrtho(false, Constantes.LARGURA_JANELA, Constantes.ALTURA_JANELA);
+    camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
   }
 
   @Override
