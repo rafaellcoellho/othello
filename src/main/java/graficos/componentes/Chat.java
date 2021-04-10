@@ -19,7 +19,7 @@ public class Chat {
 
   public void desenharChat() {
     // Obrigatoriamente estando dentro de processamento em lote
-    jogo.processamentoEmLoteFormas.setColor(CoresPadrao.FUNDO_CHAT.cor);
+    jogo.processamentoEmLoteFormas.setColor(CoresPadrao.CINZA.cor);
     jogo.processamentoEmLoteFormas.rect(xInicial, yInicial, LARGURA, ALTURA);
   }
 }

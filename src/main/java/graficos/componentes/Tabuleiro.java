@@ -26,10 +26,10 @@ public class Tabuleiro {
     boolean colunaEhPar = (coluna % 2) == 0;
 
     if (linhasIniciandoComQuadradoEscuro.contains(linha)) {
-      return colunaEhPar ? CoresPadrao.QUADRADO_ESCURO.cor : CoresPadrao.QUADRADO_CLARO.cor;
+      return colunaEhPar ? CoresPadrao.VERDE.cor : CoresPadrao.VERDE_CONTRASTE.cor;
     }
 
-    return colunaEhPar ? CoresPadrao.QUADRADO_CLARO.cor : CoresPadrao.QUADRADO_ESCURO.cor;
+    return colunaEhPar ? CoresPadrao.VERDE_CONTRASTE.cor : CoresPadrao.VERDE.cor;
   }
 
   public void desenharTabuleiro() {
@@ -50,7 +50,7 @@ public class Tabuleiro {
     float yInicialBotao = yInicial - (margemTopo + ALTURA_BOTAO);
 
     // Obrigatoriamente estando dentro de processamento em lote
-    jogo.processamentoEmLoteFormas.setColor(CoresPadrao.BOTAO_PASSAR_TURNO.cor);
+    jogo.processamentoEmLoteFormas.setColor(CoresPadrao.SUCESSO.cor);
     jogo.processamentoEmLoteFormas.rect(xInicialBotao, yInicialBotao, LARGURA_BOTAO, ALTURA_BOTAO);
   }
 
@@ -62,7 +62,7 @@ public class Tabuleiro {
     float yInicialBotao = yInicial - (margemTopo + ALTURA_BOTAO);
 
     // Obrigatoriamente estando dentro de processamento em lote
-    jogo.processamentoEmLoteFormas.setColor(CoresPadrao.BOTAO_DESISTIR.cor);
+    jogo.processamentoEmLoteFormas.setColor(CoresPadrao.PERIGO.cor);
     jogo.processamentoEmLoteFormas.rect(xInicialBotao, yInicialBotao, LARGURA_BOTAO, ALTURA_BOTAO);
   }
 }
