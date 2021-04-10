@@ -1,6 +1,6 @@
 package logica;
 
-public class ExcecaoCasaVazia extends Exception {
+public class ExcecaoCasaVazia extends RuntimeException {
   ExcecaoCasaVazia(int linha, int coluna) {
     super(constroiMensagem(linha, coluna));
   }

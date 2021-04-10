@@ -116,21 +116,21 @@ public class Othello {
     return minhaPeca.equals(turno);
   }
 
-  public void colocarPeca(int linha, int coluna) throws ExcecaoCasaPreenchida {
+  public void colocarPeca(int linha, int coluna) {
     if (!tabuleiro[linha][coluna].equals(Casa.VAZIA)) {
       throw new ExcecaoCasaPreenchida(tabuleiro[linha][coluna], linha, coluna);
     }
     tabuleiro[linha][coluna] = minhaPeca.equals(Peca.BRANCO) ? Casa.BRANCO : Casa.PRETO;
   }
 
-  public void retirarPeca(int linha, int coluna) throws ExcecaoCasaVazia {
+  public void retirarPeca(int linha, int coluna) {
     if (tabuleiro[linha][coluna].equals(Casa.VAZIA)) {
       throw new ExcecaoCasaVazia(linha, coluna);
     }
     tabuleiro[linha][coluna] = minhaPeca.equals(Peca.BRANCO) ? Casa.BRANCO : Casa.PRETO;
   }
 
-  public void virarPeca(int linha, int coluna) throws ExcecaoCasaVazia {
+  public void virarPeca(int linha, int coluna) {
     if (tabuleiro[linha][coluna].equals(Casa.VAZIA)) {
       throw new ExcecaoCasaVazia(linha, coluna);
     }

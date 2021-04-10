@@ -1,6 +1,6 @@
 package logica;
 
-public class ExcecaoCasaPreenchida extends Exception {
+public class ExcecaoCasaPreenchida extends RuntimeException {
   ExcecaoCasaPreenchida(Othello.Casa selecionada, int linha, int coluna) {
     super(constroiMensagem(selecionada, linha, coluna));
   }

@@ -1,6 +1,6 @@
 package logica;
 
-public class ExcecaoNaoPodePassarTurno extends Exception {
+public class ExcecaoNaoPodePassarTurno extends RuntimeException {
   ExcecaoNaoPodePassarTurno(Othello.Peca jogador) {
     super(constroiMensagem(jogador));
   }
