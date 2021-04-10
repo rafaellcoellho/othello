@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.rafaellcoellho</groupId>
-    <artifactId>Othello</artifactId>
+    <artifactId>othello</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Othello</name>
+    <name>othello</name>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -59,7 +59,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>Othello</finalName>
+        <finalName>othello</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
