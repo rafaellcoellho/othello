@@ -1,6 +1,6 @@
 package graficos.componentes;
 
-import graficos.CoresPadrao;
+import graficos.PaletaDeCores;
 import graficos.Othello;
 
 public class Chat {
@@ -19,7 +19,7 @@ public class Chat {
 
   public void desenharChat() {
     // Obrigatoriamente estando dentro de processamento em lote
-    jogo.processamentoEmLoteFormas.setColor(CoresPadrao.CINZA.cor);
+    jogo.processamentoEmLoteFormas.setColor(PaletaDeCores.CINZA.cor);
     jogo.processamentoEmLoteFormas.rect(xInicial, yInicial, LARGURA, ALTURA);
   }
 }

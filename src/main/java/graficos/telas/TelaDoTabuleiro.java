@@ -27,7 +27,7 @@ public class TelaDoTabuleiro implements Screen {
 
   @Override
   public void render(float delta) {
-    ScreenUtils.clear(CoresPadrao.PRETO.cor);
+    ScreenUtils.clear(PaletaDeCores.PRETO.cor);
 
     camera.update();
 

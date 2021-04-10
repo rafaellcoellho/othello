@@ -1,7 +1,7 @@
 package graficos.componentes;
 
 import com.badlogic.gdx.graphics.Color;
-import graficos.CoresPadrao;
+import graficos.PaletaDeCores;
 import graficos.Othello;
 
 import java.util.List;
@@ -26,10 +26,10 @@ public class Tabuleiro {
     boolean colunaEhPar = (coluna % 2) == 0;
 
     if (linhasIniciandoComQuadradoEscuro.contains(linha)) {
-      return colunaEhPar ? CoresPadrao.VERDE.cor : CoresPadrao.VERDE_CONTRASTE.cor;
+      return colunaEhPar ? PaletaDeCores.VERDE.cor : PaletaDeCores.VERDE_CONTRASTE.cor;
     }
 
-    return colunaEhPar ? CoresPadrao.VERDE_CONTRASTE.cor : CoresPadrao.VERDE.cor;
+    return colunaEhPar ? PaletaDeCores.VERDE_CONTRASTE.cor : PaletaDeCores.VERDE.cor;
   }
 
   public void desenharTabuleiro() {
@@ -50,7 +50,7 @@ public class Tabuleiro {
     float yInicialBotao = yInicial - (margemTopo + ALTURA_BOTAO);
 
     // Obrigatoriamente estando dentro de processamento em lote
-    jogo.processamentoEmLoteFormas.setColor(CoresPadrao.SUCESSO.cor);
+    jogo.processamentoEmLoteFormas.setColor(PaletaDeCores.SUCESSO.cor);
     jogo.processamentoEmLoteFormas.rect(xInicialBotao, yInicialBotao, LARGURA_BOTAO, ALTURA_BOTAO);
   }
 
@@ -62,7 +62,7 @@ public class Tabuleiro {
     float yInicialBotao = yInicial - (margemTopo + ALTURA_BOTAO);
 
     // Obrigatoriamente estando dentro de processamento em lote
-    jogo.processamentoEmLoteFormas.setColor(CoresPadrao.PERIGO.cor);
+    jogo.processamentoEmLoteFormas.setColor(PaletaDeCores.PERIGO.cor);
     jogo.processamentoEmLoteFormas.rect(xInicialBotao, yInicialBotao, LARGURA_BOTAO, ALTURA_BOTAO);
   }
 }
