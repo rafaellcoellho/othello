@@ -35,7 +35,7 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     tabuleiro = new Tabuleiro(jogo);
 
     botaoDePassarTurno = new BotaoDePassarTurno(jogo.estilo);
-    botaoDeDesistir = new BotaoDeDesistir(jogo.estilo);
+    botaoDeDesistir = new BotaoDeDesistir(jogo.estilo, cena);
     deQuemEhOTurno = new IndicadorDeTurno(jogo.estilo);
 
     construirLayout();
