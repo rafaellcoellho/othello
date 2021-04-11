@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import graficos.*;
 
@@ -23,6 +23,13 @@ public class TelaDoTabuleiro extends ScreenAdapter {
 
     cena = new Stage(new ScreenViewport());
     Gdx.input.setInputProcessor(cena);
+
+    Table tela = new Table();
+    tela.setFillParent(true);
+    tela.pad(30);
+
+    cena.addActor(tela);
+    cena.setDebugAll(true);
   }
 
   @Override
