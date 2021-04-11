@@ -9,6 +9,7 @@
     vermelho: { hex: b33430 },
     preto: { hex: 312e2b },
     cinza: { hex: b1b1b0 },
+    azul: { hex: 52b1dc },
   },
   TintedDrawable: {
     dialogDim: { name: white, color: { r: 0, g: 0, b: 0, a: 0.45 } },
@@ -53,6 +54,7 @@
   },
   LabelStyle: {
     default: { font: default-font, fontColor: branco }
+    indicador-de-turno: { font: default-font, fontColor: azul }
   },
   TextFieldStyle: {
     default: { selection: selection, background: textfield, font: default-font, fontColor: branco, cursor: cursor }

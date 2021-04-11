@@ -8,6 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import graficos.*;
+import graficos.componentes.BotaoDeDesistir;
+import graficos.componentes.BotaoDePassarTurno;
+import graficos.componentes.IndicadorDeTurno;
 import graficos.componentes.Tabuleiro;
 
 public class TelaDoTabuleiro extends ScreenAdapter {
@@ -15,6 +18,10 @@ public class TelaDoTabuleiro extends ScreenAdapter {
   Othello jogo;
   private final OrthographicCamera camera;
   private final Stage cena;
+  private final Tabuleiro tabuleiro;
+  private final BotaoDePassarTurno botaoDePassarTurno;
+  private final BotaoDeDesistir botaoDeDesistir;
+  private final IndicadorDeTurno deQuemEhOTurno;
 
   public TelaDoTabuleiro(Othello jogo) {
     this.jogo = jogo;
@@ -25,12 +32,16 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     cena = new Stage(new ScreenViewport());
     Gdx.input.setInputProcessor(cena);
 
-    Tabuleiro tabuleiro = new Tabuleiro(jogo);
+    tabuleiro = new Tabuleiro(jogo);
 
-    TextButton botaoDePassarTurno = new TextButton("Passar", jogo.estilo, "sucesso");
-    TextButton botaoDeDesistir = new TextButton("Desistir", jogo.estilo, "perigo");
-    Label deQuemEhOTurno = new Label("Eh o seu turno", jogo.estilo);
+    botaoDePassarTurno = new BotaoDePassarTurno(jogo.estilo);
+    botaoDeDesistir = new BotaoDeDesistir(jogo.estilo);
+    deQuemEhOTurno = new IndicadorDeTurno(jogo.estilo);
 
+    construirLayout();
+  }
+
+  private void construirLayout() {
     Table controles = new Table();
     controles.add(deQuemEhOTurno).fill().expand();
     controles.add(botaoDeDesistir).fill().expand();
@@ -58,7 +69,7 @@ public class TelaDoTabuleiro extends ScreenAdapter {
   }
 
   @Override
-  public void dispose () {
+  public void dispose() {
     cena.dispose();
   }
 }

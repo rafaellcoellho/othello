@@ -6,6 +6,8 @@ public enum PaletaDeCores {
   PRETO(0.192f, 0.180f, 0.168f), // #312e2b
   VERDE(0.462f, 0.588f, 0.337f), // #769656
   VERDE_CONTRASTE(0.933f, 0.933f, 0.823f), // #eeeed2
+  AZUL(0.321f, 0.694f, 0.862f), // #52b1dc
+  BRANCO(1, 1, 1), // #ffffff
   CINZA(0.694f, 0.694f, 0.690f), // #b1b1b0
   SUCESSO(0.498f, 0.650f, 0.313f), // #7fa650
   ERRO(0.701f, 0.203f, 0.188f); // #b33430
