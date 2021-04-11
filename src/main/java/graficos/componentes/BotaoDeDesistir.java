@@ -25,16 +25,20 @@ public class BotaoDeDesistir extends TextButton {
         String mensagem = "Tem certeza que deseja desistir?";
         TextButton confirmar = new TextButton("Sim", estilo, "perigo");
         TextButton voltar = new TextButton("Voltar", estilo, "default");
-;
-        new Dialog("Desistir", estilo, "dialog") {
+
+        Dialog janelaDeConfirmacao = new Dialog("Desistir", estilo, "dialog") {
           protected void result(Object resposta) {
             boolean desistiu = (boolean) resposta;
             if (desistiu) {
               System.out.println("Desistir... tururu");
             }
           }
-        }.text(mensagem).button(confirmar, true).button(voltar, false).show(cena);
+        };
 
+        janelaDeConfirmacao.text(mensagem);
+        janelaDeConfirmacao.button(confirmar, true);
+        janelaDeConfirmacao.button(voltar, false);
+        janelaDeConfirmacao.show(cena);
       }
     };
   }

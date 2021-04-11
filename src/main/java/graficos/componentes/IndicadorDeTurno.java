@@ -13,10 +13,10 @@ public class IndicadorDeTurno extends Table {
   private final Label oponente;
 
   public IndicadorDeTurno(Skin estilo) {
-    setaJogador = new Label(">", estilo, "indicador-de-turno");
-    setaOponente = new Label(">", estilo, "indicador-de-turno");
-    jogador = new Label("voce", estilo);
-    oponente = new Label("adversario", estilo);
+    setaJogador = new Label(">>", estilo, "indicador-de-turno");
+    setaOponente = new Label(">>", estilo, "indicador-de-turno");
+    jogador = new Label("Voce", estilo);
+    oponente = new Label("Adversario", estilo);
 
     add(setaJogador);
     add(jogador).expand();
