@@ -22,7 +22,7 @@ public class BotaoDePassarTurno extends TextButton {
   }
 
   public void colocarEmEstadoDeEspera() {
-    setText("...");
+    setText("Aguarde...");
     setDisabled(true);
   }
 
