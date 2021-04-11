@@ -44,8 +44,8 @@ public class TelaDoTabuleiro extends ScreenAdapter {
   private void construirLayout() {
     Table controles = new Table();
     controles.add(deQuemEhOTurno).fill().expand();
-    controles.add(botaoDeDesistir).fill().expand();
-    controles.add(botaoDePassarTurno).fill().padLeft(15).expand();
+    controles.add(botaoDeDesistir).fill().prefWidth(100).expand();
+    controles.add(botaoDePassarTurno).fill().prefWidth(100).padLeft(15).expand();
 
     Table tabuleiroComControles = new Table();
     tabuleiroComControles.add(tabuleiro);

@@ -9,20 +9,25 @@ public class BotaoDePassarTurno extends TextButton {
 
   public BotaoDePassarTurno(Skin estilo) {
     super("Passar", estilo, "sucesso");
+    setHeight(67);
     addListener(passarTurno());
   }
 
   private ChangeListener passarTurno() {
     return new ChangeListener() {
       public void changed(ChangeEvent event, Actor actor) {
-        System.out.println("Clicked! Is checked: " + isChecked());
-        setText("Good job!");
+        colocarEmEstadoDeEspera();
       }
     };
   }
 
   public void colocarEmEstadoDeEspera() {
-    setText("Esperando...");
+    setText("...");
     setDisabled(true);
+  }
+
+  public void colocarEmEstadoNormal() {
+    setText("Passar");
+    setDisabled(false);
   }
 }
