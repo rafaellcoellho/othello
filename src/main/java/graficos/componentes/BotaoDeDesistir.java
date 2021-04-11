@@ -23,7 +23,9 @@ public class BotaoDeDesistir extends TextButton {
     return new ChangeListener() {
       public void changed(ChangeEvent event, Actor actor) {
         String mensagem = "Tem certeza que deseja desistir?";
-
+        TextButton confirmar = new TextButton("Sim", estilo, "perigo");
+        TextButton voltar = new TextButton("Voltar", estilo, "default");
+;
         new Dialog("Desistir", estilo, "dialog") {
           protected void result(Object resposta) {
             boolean desistiu = (boolean) resposta;
@@ -31,7 +33,7 @@ public class BotaoDeDesistir extends TextButton {
               System.out.println("Desistir... tururu");
             }
           }
-        }.text(mensagem).button("Sim", true).button("voltar", false).show(cena);
+        }.text(mensagem).button(confirmar, true).button(voltar, false).show(cena);
 
       }
     };

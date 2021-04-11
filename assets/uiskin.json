@@ -1,6 +1,7 @@
 {
   BitmapFont: {
-    default-font: { file: default.fnt }
+    default-font: { file: default.fnt },
+    fonte-pequena: { file: default.fnt, scaledSize: 14 },
   },
   Color: {
     verde: { hex: 769656 },
@@ -9,12 +10,14 @@
     vermelho: { hex: b33430 },
     preto: { hex: 312e2b },
     cinza: { hex: b1b1b0 },
+    cinza-transparente: { hex: b1b1b040 },
     azul: { hex: 52b1dc },
   },
   TintedDrawable: {
     dialogDim: { name: white, color: { r: 0, g: 0, b: 0, a: 0.45 } },
     sucesso: { name: default-round, color: { hex: 7fa650 } },
-    perigo: { name: default-round, color: vermelho }
+    perigo: { name: default-round, color: vermelho },
+    fundoChat: { name: default-rect, color: cinza-transparente },
   },
   ButtonStyle: {
     default: { down: default-round-down, up: default-round, disabled: default-round },
@@ -24,10 +27,16 @@
     default: { parent: default, font: default-font, fontColor: branco, disabledFontColor: cinza },
     toggle: { parent: default, checked: default-round-down, downFontColor: vermelho },
     sucesso: { parent: default, up: sucesso },
-    perigo: { parent: default, up: perigo}
+    perigo: { parent: default, up: perigo }
   },
   ScrollPaneStyle: {
-    default: { vScroll: default-scroll, hScrollKnob: default-round-large, background: default-rect, hScroll: default-scroll, vScrollKnob: default-round-large }
+    default: {
+      vScroll: default-scroll,
+      hScrollKnob: default-round-large,
+      background: fundoChat,
+      hScroll: default-scroll,
+      vScrollKnob: default-round-large
+    }
   },
   SelectBoxStyle: {
     default: {
@@ -57,7 +66,8 @@
     indicador-de-turno: { font: default-font, fontColor: azul }
   },
   TextFieldStyle: {
-    default: { selection: selection, background: textfield, font: default-font, fontColor: branco, cursor: cursor }
+    default: { selection: selection, background: textfield, font: default-font, fontColor: branco, cursor: cursor },
+    chat: { parent: default, font: fonte-pequena },
   },
   CheckBoxStyle: {
     default: { checkboxOn: check-on, checkboxOff: check-off, font: default-font, fontColor: branco }

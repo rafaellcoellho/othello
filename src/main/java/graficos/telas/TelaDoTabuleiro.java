@@ -8,10 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import graficos.*;
-import graficos.componentes.BotaoDeDesistir;
-import graficos.componentes.BotaoDePassarTurno;
-import graficos.componentes.IndicadorDeTurno;
-import graficos.componentes.Tabuleiro;
+import graficos.componentes.*;
 
 public class TelaDoTabuleiro extends ScreenAdapter {
 
@@ -22,6 +19,7 @@ public class TelaDoTabuleiro extends ScreenAdapter {
   private final BotaoDePassarTurno botaoDePassarTurno;
   private final BotaoDeDesistir botaoDeDesistir;
   private final IndicadorDeTurno deQuemEhOTurno;
+  private final Chat chat;
 
   public TelaDoTabuleiro(Othello jogo) {
     this.jogo = jogo;
@@ -37,6 +35,7 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     botaoDePassarTurno = new BotaoDePassarTurno(jogo.estilo);
     botaoDeDesistir = new BotaoDeDesistir(jogo.estilo, cena);
     deQuemEhOTurno = new IndicadorDeTurno(jogo.estilo);
+    chat = new Chat(jogo.estilo);
 
     construirLayout();
   }
@@ -55,7 +54,8 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     Table tela = new Table();
     tela.setFillParent(true);
     tela.pad(30);
-    tela.add(tabuleiroComControles).left().top().expand();
+    tela.add(tabuleiroComControles).padRight(30);
+    tela.add(chat).fill().expand();
 
     cena.addActor(tela);
   }
