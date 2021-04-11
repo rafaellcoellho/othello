@@ -27,8 +27,8 @@ public class TelaDoTabuleiro extends ScreenAdapter {
 
     Tabuleiro tabuleiro = new Tabuleiro(jogo);
 
-    TextButton botaoDePassarTurno = new TextButton("Passar", jogo.estilo);
-    TextButton botaoDeDesistir = new TextButton("Desistir", jogo.estilo);
+    TextButton botaoDePassarTurno = new TextButton("Passar", jogo.estilo, "sucesso");
+    TextButton botaoDeDesistir = new TextButton("Desistir", jogo.estilo, "perigo");
     Label deQuemEhOTurno = new Label("Eh o seu turno", jogo.estilo);
 
     Table controles = new Table();
@@ -47,7 +47,6 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     tela.add(tabuleiroComControles).left().top().expand();
 
     cena.addActor(tela);
-    cena.setDebugAll(true);
   }
 
   @Override

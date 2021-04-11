@@ -1,29 +1,36 @@
 {
-  BitmapFont: { default-font: { file: default.fnt } },
+  BitmapFont: {
+    default-font: { file: default.fnt }
+  },
   Color: {
-    green: { a: 1, b: 0, g: 1, r: 0 },
-    white: { a: 1, b: 1, g: 1, r: 1 },
-    red: { a: 1, b: 0, g: 0, r: 1 },
-    black: { a: 1, b: 0, g: 0, r: 0 },
-    gray: { a: 1, b: 0.8, g: 0.8, r: 0.8 },
+    verde: { hex: 769656 },
+    verde-contraste: { hex: eeeed2 },
+    branco: { hex: ffffff },
+    vermelho: { hex: b33430 },
+    preto: { hex: 312e2b },
+    cinza: { hex: b1b1b0 },
   },
   TintedDrawable: {
     dialogDim: { name: white, color: { r: 0, g: 0, b: 0, a: 0.45 } },
+    sucesso: { name: default-round, color: { hex: 7fa650 } },
+    perigo: { name: default-round, color: vermelho }
   },
   ButtonStyle: {
     default: { down: default-round-down, up: default-round, disabled: default-round },
-    toggle: { parent: default, checked: default-round-down }
+    toggle: { parent: default, checked: default-round-down },
   },
   TextButtonStyle: {
-    default: { parent: default, font: default-font, fontColor: white, disabledFontColor: gray },
-    toggle: { parent: default, checked: default-round-down, downFontColor: red }
+    default: { parent: default, font: default-font, fontColor: branco, disabledFontColor: cinza },
+    toggle: { parent: default, checked: default-round-down, downFontColor: vermelho },
+    sucesso: { parent: default, up: sucesso },
+    perigo: { parent: default, up: perigo}
   },
   ScrollPaneStyle: {
     default: { vScroll: default-scroll, hScrollKnob: default-round-large, background: default-rect, hScroll: default-scroll, vScrollKnob: default-round-large }
   },
   SelectBoxStyle: {
     default: {
-      font: default-font, fontColor: white, background: default-select,
+      font: default-font, fontColor: branco, background: default-select,
       scrollStyle: default,
       listStyle: { font: default-font, selection: default-select-selection }
     }
@@ -33,7 +40,7 @@
     default-horizontal: { handle: default-splitpane }
   },
   WindowStyle: {
-    default: { titleFont: default-font, background: default-window, titleFontColor: white },
+    default: { titleFont: default-font, background: default-window, titleFontColor: branco },
     dialog: { parent: default, stageBackground: dialogDim }
   },
   ProgressBarStyle: {
@@ -45,16 +52,16 @@
     default-vertical: { parent: default-vertical }
   },
   LabelStyle: {
-    default: { font: default-font, fontColor: white }
+    default: { font: default-font, fontColor: branco }
   },
   TextFieldStyle: {
-    default: { selection: selection, background: textfield, font: default-font, fontColor: white, cursor: cursor }
+    default: { selection: selection, background: textfield, font: default-font, fontColor: branco, cursor: cursor }
   },
   CheckBoxStyle: {
-    default: { checkboxOn: check-on, checkboxOff: check-off, font: default-font, fontColor: white }
+    default: { checkboxOn: check-on, checkboxOff: check-off, font: default-font, fontColor: branco }
   },
   ListStyle: {
-    default: { fontColorUnselected: white, selection: selection, fontColorSelected: white, font: default-font }
+    default: { fontColorUnselected: branco, selection: selection, fontColorSelected: branco, font: default-font }
   },
   TouchpadStyle: {
     default: { background: default-pane, knob: default-round-large }
@@ -64,7 +71,7 @@
   },
   TextTooltipStyle: {
     default: {
-      label: { font: default-font, fontColor: white },
+      label: { font: default-font, fontColor: branco },
       background: default-pane, wrapWidth: 150
     }
   },
