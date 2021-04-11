@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import graficos.*;
+import graficos.componentes.Tabuleiro;
 
 public class TelaDoTabuleiro extends ScreenAdapter {
 
@@ -24,9 +25,26 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     cena = new Stage(new ScreenViewport());
     Gdx.input.setInputProcessor(cena);
 
+    Tabuleiro tabuleiro = new Tabuleiro(jogo);
+
+    TextButton botaoDePassarTurno = new TextButton("Passar", jogo.estilo);
+    TextButton botaoDeDesistir = new TextButton("Desistir", jogo.estilo);
+    Label deQuemEhOTurno = new Label("Eh o seu turno", jogo.estilo);
+
+    Table controles = new Table();
+    controles.add(deQuemEhOTurno).fill().expand();
+    controles.add(botaoDeDesistir).fill().expand();
+    controles.add(botaoDePassarTurno).fill().padLeft(15).expand();
+
+    Table tabuleiroComControles = new Table();
+    tabuleiroComControles.add(tabuleiro);
+    tabuleiroComControles.row();
+    tabuleiroComControles.add(controles).height(67).padTop(15).fillX().expand();
+
     Table tela = new Table();
     tela.setFillParent(true);
     tela.pad(30);
+    tela.add(tabuleiroComControles).left().top().expand();
 
     cena.addActor(tela);
     cena.setDebugAll(true);
