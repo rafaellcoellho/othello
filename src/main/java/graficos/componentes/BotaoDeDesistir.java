@@ -15,8 +15,7 @@ public class BotaoDeDesistir extends TextButton {
   private ChangeListener desistir() {
     return new ChangeListener() {
       public void changed(ChangeEvent event, Actor actor) {
-        System.out.println("Clicked! Is checked: " + isChecked());
-        setText("Good job!");
+        System.out.println("Desistir... tururu");
       }
     };
   }
