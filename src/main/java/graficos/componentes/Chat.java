@@ -4,9 +4,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Chat extends Table {
 
   public enum Origem {
@@ -16,7 +13,6 @@ public class Chat extends Table {
 
   private final ScrollPane areaDeMensagens;
   private final TextArea textoDoUsuario;
-  private final TextButton botaoDeEnviar;
   private final VerticalGroup linhas;
   private final Skin estilo;
 
@@ -31,7 +27,7 @@ public class Chat extends Table {
     areaDeMensagens.setOverscroll(false, false);
 
     textoDoUsuario = new TextArea("", estilo, "chat");
-    botaoDeEnviar = new TextButton("Enviar", estilo, "sucesso");
+    TextButton botaoDeEnviar = new TextButton("Enviar", estilo, "sucesso");
 
     botaoDeEnviar.addListener(mandarMensagem());
 
@@ -48,7 +44,8 @@ public class Chat extends Table {
     Label labelMensagem = new Label(mensagem, estilo);
     labelMensagem.setWrap(true);
 
-    Label labelOrigem = origem == Origem.MINHA
+    Label labelOrigem =
+        origem == Origem.MINHA
             ? new Label("Voce:", estilo, "azul")
             : new Label("Adversario:", estilo, "vermelho");
 
