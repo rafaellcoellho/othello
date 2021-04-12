@@ -37,12 +37,6 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     deQuemEhOTurno = new IndicadorDeTurno(jogo.estilo);
     chat = new Chat(jogo.estilo);
 
-    chat.adicionarMensagem(Chat.Origem.MINHA, "Oi");
-    chat.adicionarMensagem(Chat.Origem.ADVERSARIO, "Koe");
-//    for (int i = 0; i < 30; i++) {
-//      chat.adicionarMensagem(Chat.Origem.ADVERSARIO, "Koe");
-//    }
-
     construirLayout();
   }
 

@@ -13,6 +13,7 @@ public class Chat extends Table {
 
   private final ScrollPane areaDeMensagens;
   private final TextArea textoDoUsuario;
+  private final TextButton botaoDeEnviar;
   private final VerticalGroup linhas;
   private final Skin estilo;
 
@@ -27,10 +28,14 @@ public class Chat extends Table {
     areaDeMensagens.setOverscroll(false, false);
 
     textoDoUsuario = new TextArea("", estilo, "chat");
-    TextButton botaoDeEnviar = new TextButton("Enviar", estilo, "sucesso");
+    botaoDeEnviar = new TextButton("Enviar", estilo, "sucesso");
 
     botaoDeEnviar.addListener(mandarMensagem());
 
+    construirLayout();
+  }
+
+  private void construirLayout() {
     Table textoComBotaoDeEnviar = new Table();
     textoComBotaoDeEnviar.add(textoDoUsuario).grow();
     textoComBotaoDeEnviar.add(botaoDeEnviar).fillY().prefWidth(70);
