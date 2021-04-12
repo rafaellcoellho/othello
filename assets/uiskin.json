@@ -63,11 +63,13 @@
   },
   LabelStyle: {
     default: { font: default-font, fontColor: branco }
-    indicador-de-turno: { font: default-font, fontColor: azul }
+    indicador-de-turno: { font: default-font, fontColor: azul },
+    azul: { font: default-font, fontColor: azul },
+    vermelho: { font: default-font, fontColor: vermelho },
   },
   TextFieldStyle: {
     default: { selection: selection, background: textfield, font: default-font, fontColor: branco, cursor: cursor },
-    chat: { parent: default, font: fonte-pequena },
+    chat: { parent: default, font: fonte-pequena},
   },
   CheckBoxStyle: {
     default: { checkboxOn: check-on, checkboxOff: check-off, font: default-font, fontColor: branco }
