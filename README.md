@@ -16,3 +16,4 @@ Implementação do jogo othello usando a biblioteca libGDX.
 
 + [FBO - Federação Brasileira de Othello](http://www.othellobrasil.com.br/)
 + [Regras](https://www.youtube.com/watch?v=Ol3Id7xYsY4)
++ [Smooth Circle](https://github.com/iodamien/Smooth-circle)

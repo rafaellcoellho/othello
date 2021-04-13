@@ -4,18 +4,22 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import graficos.Othello;
 import graficos.PaletaDeCores;
 
 public class Tabuleiro extends Actor {
 
   private final int LADO_QUADRADO = 79;
+  private final int RAIO_CIRCULO = 25;
   private final ShapeRenderer renderer;
 
   public Tabuleiro(Othello jogo) {
     renderer = jogo.shapeRenderer;
     setWidth(LADO_QUADRADO * 8);
     setHeight(LADO_QUADRADO * 8);
+    addListener(clicouNoTabuleiro());
   }
 
   @Override
@@ -53,5 +57,20 @@ public class Tabuleiro extends Actor {
   private void desenharQuadrado(float x, float y, Color cor) {
     renderer.setColor(cor);
     renderer.rect(x, y, LADO_QUADRADO, LADO_QUADRADO);
+  }
+
+  private void desenharCirculo(float x, float y, Color cor) {
+    renderer.setColor(cor);
+    renderer.circle(x, y, RAIO_CIRCULO);
+  }
+
+  private ClickListener clicouNoTabuleiro() {
+    return new ClickListener() {
+      public void clicked(InputEvent event, float x, float y) {
+        int linha = (int) Math.ceil(y/79);
+        int coluna = (int) Math.ceil(x/79);
+        System.out.printf("X: %f | Y: %f | Linha: %d | Coluna: %d\n", x, y, linha, coluna);
+      }
+    };
   }
 }
