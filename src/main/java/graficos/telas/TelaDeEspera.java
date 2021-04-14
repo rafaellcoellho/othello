@@ -54,7 +54,6 @@ public class TelaDeEspera extends ScreenAdapter implements Observador {
 
   @Override
   public void dispose() {
-    cena.dispose();
     jogo.comunicacao.eventos.removerObservador("conectou", this);
   }
 

@@ -1,7 +1,6 @@
 package rede;
 
 import utilitarios.Eventos;
-import utilitarios.Observador;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

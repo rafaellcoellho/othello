@@ -38,11 +38,9 @@ public class TelaInicial extends ScreenAdapter {
     Gdx.input.setInputProcessor(cena);
 
     botaoDeGerenciarPartida = new TextButton("Criar partida", jogo.estilo, "sucesso");
-    botaoDeGerenciarPartida.setHeight(67);
     botaoDeGerenciarPartida.addListener(irParaTelaDeEspera());
 
     botaoDeConectarEmPartida = new TextButton("Conectar", jogo.estilo, "perigo");
-    botaoDeConectarEmPartida.setHeight(67);
     botaoDeConectarEmPartida.addListener(irParaTelaDeInput());
 
     Texture imagem = new Texture(Gdx.files.internal("assets/logo.png"));

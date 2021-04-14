@@ -18,23 +18,6 @@ public class Othello extends Game {
   public Logica estado;
   public Comunicacao comunicacao;
 
-  public Othello() {
-//    Comunicacao.Papel papel = arg.equals("servidor") ? Comunicacao.Papel.SERVIDOR : Comunicacao.Papel.CLIENTE;
-//    comunicacao = new Comunicacao(papel, "localhost", 9090);
-//
-//    if (papel.equals(Comunicacao.Papel.SERVIDOR)) {
-//      System.out.println("Esperando conexão...");
-//      comunicacao.esperarConexao();
-//      System.out.println("Sucesso...");
-//      estado = new Logica(Logica.Peca.PRETO);
-//    } else {
-//      System.out.println("Tentando conexão...");
-//      comunicacao.conectar();
-//      System.out.println("Sucesso...");
-//      estado = new Logica(Logica.Peca.BRANCO);
-//    }
-  }
-
   @Override
   public void create() {
     fonte = new BitmapFont();

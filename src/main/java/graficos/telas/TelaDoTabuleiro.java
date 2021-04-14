@@ -1,12 +1,10 @@
 package graficos.telas;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import graficos.*;
 import graficos.componentes.*;
 import logica.Logica;
@@ -30,7 +28,7 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     tabuleiro = new Tabuleiro(jogo);
 
     botaoDePassarTurno = new BotaoDePassarTurno(jogo);
-    botaoDeDesistir = new BotaoDeDesistir(jogo, cena);
+    botaoDeDesistir = new BotaoDeDesistir(jogo, camera, cena);
     deQuemEhOTurno = new IndicadorDeTurno(jogo.estilo);
     chat = new Chat(jogo);
 
@@ -95,7 +93,5 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     jogo.comunicacao.eventos.removerObservador("clicouBotaoEsquerdoMouse", tabuleiro);
     jogo.comunicacao.eventos.removerObservador("clicouBotaoDireitoMouse", tabuleiro);
     jogo.comunicacao.eventos.removerObservador("desistencia", botaoDeDesistir);
-
-    cena.dispose();
   }
 }
