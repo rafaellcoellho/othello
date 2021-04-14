@@ -15,6 +15,6 @@ public class IniciadorDeAplicativoDesktop {
     configuracaoGeral.setWindowedMode(LARGURA_JANELA, ALTURA_JANELA);
     configuracaoGeral.setResizable(false);
 
-    new Lwjgl3Application(new Othello(args[0]), configuracaoGeral);
+    new Lwjgl3Application(new Othello(), configuracaoGeral);
   }
 }
