@@ -68,6 +68,14 @@ public class Comunicacao extends Thread {
     }
   }
 
+  public void encerrarConexao() {
+    try {
+      socket.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
   public void run() {
     String mensagemRecebida;
     try {
