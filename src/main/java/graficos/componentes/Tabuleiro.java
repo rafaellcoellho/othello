@@ -10,11 +10,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import graficos.Othello;
 import graficos.PaletaDeCores;
 import logica.Logica;
+import rede.Mensagem;
+import utilitarios.Observador;
 
-public class Tabuleiro extends Actor {
+public class Tabuleiro extends Actor implements Observador {
 
   private final int LADO_QUADRADO = 79;
-  private final int RAIO_CIRCULO = 30;
   private final ShapeRenderer renderer;
   private final Othello jogo;
 
@@ -77,6 +78,7 @@ public class Tabuleiro extends Actor {
 
   private void desenharCirculo(float x, float y, Color cor) {
     renderer.setColor(cor);
+    int RAIO_CIRCULO = 30;
     renderer.circle(x, y, RAIO_CIRCULO);
   }
 
@@ -104,5 +106,15 @@ public class Tabuleiro extends Actor {
         }
       }
     };
+  }
+
+  @Override
+  public void reagir(String tipoDeEvento, Logica estado) {}
+
+  @Override
+  public void reagir(String tipoDeEvento, Mensagem mensagem) {
+    if (tipoDeEvento.equals("receberTurno")) {
+      jogo.estado.receberTurno();
+    }
   }
 }

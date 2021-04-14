@@ -19,7 +19,7 @@ public class Logica {
 
   public ArrayList<ArrayList<Casa>> tabuleiro;
   private Peca turno;
-  private final Peca minhaPeca;
+  public final Peca minhaPeca;
   public Eventos eventos;
 
   public Logica(Peca minhaPeca) {
@@ -50,6 +50,10 @@ public class Logica {
     }
     turno = turno.equals(Peca.BRANCO) ? Peca.PRETO : Peca.BRANCO;
     eventos.notificarObservadores("passarTurno", this);
+  }
+
+  public void receberTurno() {
+    turno = turno.equals(Peca.BRANCO) ? Peca.PRETO : Peca.BRANCO;
   }
 
   public boolean ehMeuTurno() {

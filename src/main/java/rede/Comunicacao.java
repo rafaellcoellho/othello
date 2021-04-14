@@ -26,7 +26,7 @@ public class Comunicacao extends Thread {
   public Comunicacao(Papel papel, String enderecoIp, Integer porta) {
     this.enderecoIp = enderecoIp;
     this.porta = porta;
-    eventos = new Eventos("mensagemRecebida");
+    eventos = new Eventos("mensagemRecebida", "receberTurno");
 
     if (papel.equals(Papel.SERVIDOR)) {
       try {
@@ -84,6 +84,8 @@ public class Comunicacao extends Thread {
         Mensagem mensagemFormatada = new Mensagem(mensagemRecebida);
         if (mensagemFormatada.tipo.equals("CHAT")) {
           eventos.notificarObservadores("mensagemRecebida", mensagemFormatada);
+        } else if (mensagemFormatada.tipo.equals("PROX")) {
+          eventos.notificarObservadores("receberTurno", mensagemFormatada);
         }
       }
     } catch (Exception e) {

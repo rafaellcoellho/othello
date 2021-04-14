@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import graficos.*;
 import graficos.componentes.*;
+import logica.Logica;
 
 public class TelaDoTabuleiro extends ScreenAdapter {
 
@@ -40,7 +41,15 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     jogo.estado.eventos.adicionarObservador("passarTurno", deQuemEhOTurno);
     jogo.estado.eventos.adicionarObservador("passarTurno", botaoDeDesistir);
     jogo.estado.eventos.adicionarObservador("passarTurno", botaoDePassarTurno);
+    if (jogo.estado.minhaPeca.equals(Logica.Peca.BRANCO)) {
+      jogo.estado.eventos.notificarObservadores("passarTurno", jogo.estado);
+    }
+
     jogo.comunicacao.eventos.adicionarObservador("mensagemRecebida", chat);
+    jogo.comunicacao.eventos.adicionarObservador("receberTurno", deQuemEhOTurno);
+    jogo.comunicacao.eventos.adicionarObservador("receberTurno", botaoDeDesistir);
+    jogo.comunicacao.eventos.adicionarObservador("receberTurno", botaoDePassarTurno);
+    jogo.comunicacao.eventos.adicionarObservador("receberTurno", tabuleiro);
 
     construirLayout();
   }
@@ -75,6 +84,15 @@ public class TelaDoTabuleiro extends ScreenAdapter {
 
   @Override
   public void dispose() {
+    jogo.estado.eventos.removerObservador("passarTurno", deQuemEhOTurno);
+    jogo.estado.eventos.removerObservador("passarTurno", botaoDeDesistir);
+    jogo.estado.eventos.removerObservador("passarTurno", botaoDePassarTurno);
+
+    jogo.comunicacao.eventos.removerObservador("mensagemRecebida", chat);
+    jogo.comunicacao.eventos.removerObservador("receberTurno", deQuemEhOTurno);
+    jogo.comunicacao.eventos.removerObservador("receberTurno", botaoDeDesistir);
+    jogo.comunicacao.eventos.removerObservador("receberTurno", botaoDePassarTurno);
+
     cena.dispose();
   }
 }

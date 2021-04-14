@@ -24,6 +24,9 @@ public class BotaoDePassarTurno extends TextButton implements Observador {
       public void changed(ChangeEvent event, Actor actor) {
         if (jogo.estado.ehMeuTurno()) {
           jogo.estado.passarTurno();
+
+          Mensagem mensagem = new Mensagem("PROX", "");
+          jogo.comunicacao.enviarMensagem(mensagem.mensagemBruta);
         }
       }
     };
@@ -42,14 +45,14 @@ public class BotaoDePassarTurno extends TextButton implements Observador {
   @Override
   public void reagir(String tipoDeEvento, Logica estado) {
     if (tipoDeEvento.equals("passarTurno")) {
-      if (estado.ehMeuTurno()) {
-        colocarEmEstadoNormal();
-      } else {
-        colocarEmEstadoDeEspera();
-      }
+      colocarEmEstadoDeEspera();
     }
   }
 
   @Override
-  public void reagir(String tipoDeEvento, Mensagem mensagem) {}
+  public void reagir(String tipoDeEvento, Mensagem mensagem) {
+    if (tipoDeEvento.equals("receberTurno")) {
+      colocarEmEstadoNormal();
+    }
+  }
 }

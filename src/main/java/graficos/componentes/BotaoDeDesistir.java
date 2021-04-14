@@ -50,10 +50,14 @@ public class BotaoDeDesistir extends TextButton implements Observador {
   @Override
   public void reagir(String tipoDeEvento, Logica estado) {
     if (tipoDeEvento.equals("passarTurno")) {
-      setDisabled(!estado.ehMeuTurno());
+      setDisabled(true);
     }
   }
 
   @Override
-  public void reagir(String tipoDeEvento, Mensagem mensagem) {}
+  public void reagir(String tipoDeEvento, Mensagem mensagem) {
+    if (tipoDeEvento.equals("receberTurno")) {
+      setDisabled(false);
+    }
+  }
 }

@@ -25,10 +25,12 @@ public class Othello extends Game {
       System.out.println("Esperando conexão...");
       comunicacao.esperarConexao();
       System.out.println("Sucesso...");
+      estado = new Logica(Logica.Peca.PRETO);
     } else {
       System.out.println("Tentando conexão...");
       comunicacao.conectar();
       System.out.println("Sucesso...");
+      estado = new Logica(Logica.Peca.BRANCO);
     }
   }
 
@@ -37,7 +39,6 @@ public class Othello extends Game {
     fonte = new BitmapFont();
     estilo = new Skin(Gdx.files.internal("assets/uiskin.json"));
     shapeRenderer = new ShapeRenderer();
-    estado = new Logica(Logica.Peca.PRETO);
     this.setScreen(new TelaDoTabuleiro(this));
   }
 

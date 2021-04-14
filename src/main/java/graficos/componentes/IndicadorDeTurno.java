@@ -47,14 +47,14 @@ public class IndicadorDeTurno extends Table implements Observador {
   @Override
   public void reagir(String tipoDeEvento, Logica estado) {
     if (tipoDeEvento.equals("passarTurno")) {
-      if (estado.ehMeuTurno()) {
-        selecionaTurnoDoJogador();
-      } else {
-        selecionaTurnoDoOponente();
-      }
+      selecionaTurnoDoOponente();
     }
   }
 
   @Override
-  public void reagir(String tipoDeEvento, Mensagem mensagem) {}
+  public void reagir(String tipoDeEvento, Mensagem mensagem) {
+    if (tipoDeEvento.equals("receberTurno")) {
+      selecionaTurnoDoJogador();
+    }
+  }
 }
