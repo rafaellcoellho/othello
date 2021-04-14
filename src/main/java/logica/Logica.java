@@ -62,7 +62,7 @@ public class Logica {
     if (tabuleiro.get(linha).get(coluna).equals(Casa.VAZIA)) {
       throw new ExcecaoCasaVazia(linha, coluna);
     }
-    tabuleiro.get(linha).set(coluna, minhaPeca.equals(Peca.BRANCO) ? Casa.BRANCO : Casa.PRETO);
+    tabuleiro.get(linha).set(coluna, Casa.VAZIA);
   }
 
   public void virarPeca(int linha, int coluna) {
@@ -71,6 +71,24 @@ public class Logica {
     }
     Casa peca = tabuleiro.get(linha).get(coluna).equals(Casa.BRANCO) ? Casa.PRETO : Casa.BRANCO;
     tabuleiro.get(linha).set(coluna, peca);
+  }
+
+  public void clicouBotaoEsquerdo(int linha, int coluna) {
+    Casa casa = tabuleiro.get(linha).get(coluna);
+
+    if (casa.equals(Casa.VAZIA)) {
+      colocarPeca(linha, coluna);
+    } else {
+      virarPeca(linha, coluna);
+    }
+  }
+
+  public void clicouBotaoDireito(int linha, int coluna) {
+    Casa casa = tabuleiro.get(linha).get(coluna);
+
+    if (!casa.equals(Casa.VAZIA)) {
+      retirarPeca(linha, coluna);
+    }
   }
 
   public boolean houveVencedor() {
