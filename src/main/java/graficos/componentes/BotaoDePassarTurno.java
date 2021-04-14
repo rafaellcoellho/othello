@@ -4,8 +4,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import graficos.Othello;
+import logica.Logica;
+import logica.Observador;
 
-public class BotaoDePassarTurno extends TextButton {
+public class BotaoDePassarTurno extends TextButton implements Observador {
 
   private final Othello jogo;
 
@@ -21,7 +23,6 @@ public class BotaoDePassarTurno extends TextButton {
       public void changed(ChangeEvent event, Actor actor) {
         if (jogo.estado.ehMeuTurno()) {
           jogo.estado.passarTurno();
-          colocarEmEstadoDeEspera();
         }
       }
     };
@@ -35,5 +36,16 @@ public class BotaoDePassarTurno extends TextButton {
   public void colocarEmEstadoNormal() {
     setText("Passar");
     setDisabled(false);
+  }
+
+  @Override
+  public void reagir(String tipoDeEvento, Logica estado) {
+    if (tipoDeEvento.equals("passarTurno")) {
+      if (estado.ehMeuTurno()) {
+        colocarEmEstadoNormal();
+      } else {
+        colocarEmEstadoDeEspera();
+      }
+    }
   }
 }

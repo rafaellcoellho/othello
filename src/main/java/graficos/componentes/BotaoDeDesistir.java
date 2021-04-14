@@ -6,8 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import logica.Logica;
+import logica.Observador;
 
-public class BotaoDeDesistir extends TextButton {
+public class BotaoDeDesistir extends TextButton implements Observador {
 
   private final Skin estilo;
   private final Stage cena;
@@ -41,5 +43,12 @@ public class BotaoDeDesistir extends TextButton {
         janelaDeConfirmacao.show(cena);
       }
     };
+  }
+
+  @Override
+  public void reagir(String tipoDeEvento, Logica estado) {
+    if (tipoDeEvento.equals("passarTurno")) {
+      setDisabled(!estado.ehMeuTurno());
+    }
   }
 }

@@ -39,6 +39,8 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     chat = new Chat(jogo.estilo);
 
     jogo.estado.eventos.adicionarObservador("passarTurno", deQuemEhOTurno);
+    jogo.estado.eventos.adicionarObservador("passarTurno", botaoDeDesistir);
+    jogo.estado.eventos.adicionarObservador("passarTurno", botaoDePassarTurno);
 
     construirLayout();
   }
