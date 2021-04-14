@@ -68,6 +68,7 @@ public class Comunicacao extends Thread {
     try {
       while (!Thread.currentThread().isInterrupted()) {
         mensagemRecebida = streamDeEntrada.readUTF();
+        Mensagem mensagemFormatada = new Mensagem(mensagemRecebida);
       }
     } catch (Exception e) {
       e.printStackTrace();
