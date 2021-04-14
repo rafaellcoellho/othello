@@ -101,17 +101,20 @@ public class Logica {
   }
 
   public boolean jogoAcabou() {
-    Integer contador = 0;
+    int pecasBrancas = 0;
+    int pecasPretas = 0;
 
     for (int linha = 0; linha < 8; linha++) {
       for (int coluna = 0; coluna < 8; coluna++) {
-        if (!tabuleiro.get(linha).get(coluna).equals(Casa.VAZIA)) {
-          contador++;
+        if (tabuleiro.get(linha).get(coluna).equals(Casa.PRETO)) {
+          pecasPretas++;
+        } else if (tabuleiro.get(linha).get(coluna).equals(Casa.BRANCO)) {
+          pecasBrancas++;
         }
       }
     }
 
-    return contador.equals(64);
+    return (pecasPretas + pecasBrancas == 64) || pecasBrancas == 0 || pecasPretas == 0;
   }
 
   public String vencedor() {
