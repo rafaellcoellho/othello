@@ -6,14 +6,14 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import graficos.Othello;
 import graficos.PaletaDeCores;
+import logica.Logica;
+import rede.Comunicacao;
 
 public class TelaInicial extends ScreenAdapter {
 
@@ -23,6 +23,10 @@ public class TelaInicial extends ScreenAdapter {
   private final TextButton botaoDeGerenciarPartida;
   private final TextButton botaoDeConectarEmPartida;
   private final Image logoDoJogo;
+  private final Label enderecoIpLabel;
+  private final TextField enderecoIp;
+  private final Label portaLabel;
+  private final TextField porta;
 
   public TelaInicial(Othello jogo) {
     this.jogo = jogo;
@@ -44,27 +48,47 @@ public class TelaInicial extends ScreenAdapter {
     Texture imagem = new Texture(Gdx.files.internal("assets/logo.png"));
     logoDoJogo = new Image(imagem);
 
+    enderecoIpLabel = new Label("Endereco IP:", jogo.estilo);
+    enderecoIp = new TextField("localhost", jogo.estilo);
+    portaLabel = new Label("Porta:", jogo.estilo);
+    porta = new TextField("9090", jogo.estilo);
+
     construirLayout();
   }
 
   private void construirLayout() {
+    Table entradas = new Table();
+    entradas.add(enderecoIpLabel);
+    entradas.add(enderecoIp).padLeft(15);
+    entradas.row();
+    entradas.add(portaLabel).right();
+    entradas.add(porta).padLeft(15);
+
     Table tela = new Table();
     tela.setFillParent(true);
     tela.pad(30);
-    tela.add(logoDoJogo).expand();
+    tela.add(logoDoJogo).expand().colspan(2);
     tela.row();
-    tela.add(botaoDeGerenciarPartida).expandX().height(67).width(200).bottom().padBottom(5);
+    tela.add(entradas).expand().colspan(2);
     tela.row();
-    tela.add(botaoDeConectarEmPartida).expand().height(67).width(200).top();
+    tela.add(botaoDeGerenciarPartida).expandY().height(67).width(200).right().padRight(5);
+    tela.add(botaoDeConectarEmPartida).expandY().height(67).width(200).left();
 
     cena.addActor(tela);
-//    cena.setDebugAll(true);
   }
 
   private ChangeListener irParaTelaDeEspera() {
     return new ChangeListener() {
       public void changed(ChangeEvent event, Actor actor) {
-//        jogo.setScreen();
+        cena.clear();
+        jogo.comunicacao =
+            new Comunicacao(
+                Comunicacao.Papel.SERVIDOR,
+                enderecoIp.getText(),
+                Integer.parseInt(porta.getText()));
+        jogo.estado = new Logica(Logica.Peca.PRETO);
+
+        jogo.setScreen(new TelaDeEspera(jogo, camera, cena));
       }
     };
   }
@@ -72,7 +96,14 @@ public class TelaInicial extends ScreenAdapter {
   private ChangeListener irParaTelaDeInput() {
     return new ChangeListener() {
       public void changed(ChangeEvent event, Actor actor) {
-//        jogo.setScreen();
+        cena.clear();
+        jogo.comunicacao =
+            new Comunicacao(
+                Comunicacao.Papel.CLIENTE,
+                enderecoIp.getText(),
+                Integer.parseInt(porta.getText()));
+        jogo.estado = new Logica(Logica.Peca.BRANCO);
+        jogo.setScreen(new TelaDoTabuleiro(jogo, camera, cena));
       }
     };
   }
@@ -86,7 +117,5 @@ public class TelaInicial extends ScreenAdapter {
   }
 
   @Override
-  public void dispose() {
-    cena.dispose();
-  }
+  public void dispose() {}
 }

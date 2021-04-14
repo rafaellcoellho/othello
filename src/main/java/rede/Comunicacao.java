@@ -21,18 +21,21 @@ public class Comunicacao extends Thread {
   private DataInputStream streamDeEntrada;
   private final String enderecoIp;
   private final Integer porta;
+  private final Papel papel;
   public Eventos eventos;
 
   public Comunicacao(Papel papel, String enderecoIp, Integer porta) {
     this.enderecoIp = enderecoIp;
     this.porta = porta;
+    this.papel = papel;
     eventos =
         new Eventos(
             "mensagemRecebida",
             "receberTurno",
             "clicouBotaoEsquerdoMouse",
             "clicouBotaoDireitoMouse",
-            "desistencia");
+            "desistencia",
+            "conectou");
 
     if (papel.equals(Papel.SERVIDOR)) {
       try {
@@ -41,6 +44,8 @@ public class Comunicacao extends Thread {
         e.printStackTrace();
       }
     }
+
+    this.start();
   }
 
   public void esperarConexao() {
@@ -48,7 +53,6 @@ public class Comunicacao extends Thread {
       socket = socketDeServidor.accept();
       streamDeEntrada = new DataInputStream(socket.getInputStream());
       streamDeSaida = new DataOutputStream(socket.getOutputStream());
-      this.start();
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -59,7 +63,6 @@ public class Comunicacao extends Thread {
       socket = new Socket(enderecoIp, porta);
       streamDeEntrada = new DataInputStream(socket.getInputStream());
       streamDeSaida = new DataOutputStream(socket.getOutputStream());
-      this.start();
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -85,6 +88,12 @@ public class Comunicacao extends Thread {
   public void run() {
     String mensagemRecebida;
     try {
+      if (papel.equals(Papel.SERVIDOR)) {
+        esperarConexao();
+      } else {
+        conectar();
+      }
+      eventos.notificarObservadores("conectou", new Mensagem("CONE", ""));
       while (!Thread.currentThread().isInterrupted()) {
         mensagemRecebida = streamDeEntrada.readUTF();
         Mensagem mensagemFormatada = new Mensagem(mensagemRecebida);

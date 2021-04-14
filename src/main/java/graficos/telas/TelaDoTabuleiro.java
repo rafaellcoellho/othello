@@ -22,14 +22,10 @@ public class TelaDoTabuleiro extends ScreenAdapter {
   private final IndicadorDeTurno deQuemEhOTurno;
   private final Chat chat;
 
-  public TelaDoTabuleiro(Othello jogo) {
+  public TelaDoTabuleiro(Othello jogo, OrthographicCamera camera, Stage cena) {
     this.jogo = jogo;
-
-    camera = new OrthographicCamera();
-    camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
-    cena = new Stage(new ScreenViewport());
-    Gdx.input.setInputProcessor(cena);
+    this.camera = camera;
+    this.cena = cena;
 
     tabuleiro = new Tabuleiro(jogo);
 
