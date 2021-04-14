@@ -9,7 +9,7 @@ public class Mensagem {
     public String corpo;
     public Integer linha;
     public Integer coluna;
-    public Logica.Casa casa;
+    public String botao;
 
     public Mensagem(String mensagemBruta) {
         this.mensagemBruta = mensagemBruta;
@@ -21,18 +21,7 @@ public class Mensagem {
             linha = Integer.parseInt(mensagemBruta.substring(8, 9));
             coluna = Integer.parseInt(mensagemBruta.substring(12, 13));
 
-            String peca = mensagemBruta.substring(14, 15);
-            switch (peca) {
-                case "V":
-                    casa = Logica.Casa.VAZIA;
-                    break;
-                case "P":
-                    casa = Logica.Casa.PRETO;
-                    break;
-                case "B":
-                    casa = Logica.Casa.BRANCO;
-                    break;
-            }
+            botao = mensagemBruta.substring(14, 15);
         }
     }
 
@@ -43,20 +32,11 @@ public class Mensagem {
         mensagemBruta = String.format("%s: %s", tipo, corpo);
     }
 
-    public Mensagem(Integer linha, Integer coluna, Logica.Casa casa) {
+    public Mensagem(Integer linha, Integer coluna, String botao) {
         this.linha = linha;
         this.coluna = coluna;
-        this.casa = casa;
+        this.botao = botao;
 
-        String casaFormatada;
-        if (casa.equals(Logica.Casa.VAZIA)) {
-            casaFormatada = "V";
-        } else if (casa.equals(Logica.Casa.PRETO)) {
-            casaFormatada = "P";
-        } else {
-            casaFormatada = "B";
-        }
-
-        mensagemBruta = String.format("JOGO: L(%d)C(%d)%s", linha, coluna, casaFormatada);
+        mensagemBruta = String.format("JOGO: L(%d)C(%d)%s", linha, coluna, botao);
     }
 }

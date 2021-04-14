@@ -88,7 +88,6 @@ public class Tabuleiro extends Actor implements Observador {
         if (jogo.estado.ehMeuTurno()) {
           int linha = (int) Math.ceil(x / 79);
           int coluna = (int) Math.ceil(y / 79);
-          System.out.printf("X: %f | Y: %f | Linha: %d | Coluna: %d\n", x, y, linha, coluna);
           jogo.estado.clicouBotaoEsquerdo(linha - 1, coluna - 1);
         }
       }
@@ -101,7 +100,6 @@ public class Tabuleiro extends Actor implements Observador {
         if (jogo.estado.ehMeuTurno()) {
           int linha = (int) Math.ceil(x / 79);
           int coluna = (int) Math.ceil(y / 79);
-          System.out.printf("X: %f | Y: %f | Linha: %d | Coluna: %d\n", x, y, linha, coluna);
           jogo.estado.clicouBotaoDireito(linha - 1, coluna - 1);
         }
       }
