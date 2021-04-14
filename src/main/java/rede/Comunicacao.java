@@ -26,7 +26,7 @@ public class Comunicacao extends Thread {
   public Comunicacao(Papel papel, String enderecoIp, Integer porta) {
     this.enderecoIp = enderecoIp;
     this.porta = porta;
-    eventos = new Eventos("mensagemRecebida", "receberTurno");
+    eventos = new Eventos("mensagemRecebida", "receberTurno", "clicouBotaoEsquerdoMouse");
 
     if (papel.equals(Papel.SERVIDOR)) {
       try {
@@ -82,10 +82,16 @@ public class Comunicacao extends Thread {
       while (!Thread.currentThread().isInterrupted()) {
         mensagemRecebida = streamDeEntrada.readUTF();
         Mensagem mensagemFormatada = new Mensagem(mensagemRecebida);
-        if (mensagemFormatada.tipo.equals("CHAT")) {
-          eventos.notificarObservadores("mensagemRecebida", mensagemFormatada);
-        } else if (mensagemFormatada.tipo.equals("PROX")) {
-          eventos.notificarObservadores("receberTurno", mensagemFormatada);
+        switch (mensagemFormatada.tipo) {
+          case "CHAT":
+            eventos.notificarObservadores("mensagemRecebida", mensagemFormatada);
+            break;
+          case "PROX":
+            eventos.notificarObservadores("receberTurno", mensagemFormatada);
+            break;
+          case "JOGO":
+            eventos.notificarObservadores("clicouBotaoEsquerdoMouse", mensagemFormatada);
+            break;
         }
       }
     } catch (Exception e) {

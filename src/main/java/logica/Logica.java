@@ -64,7 +64,7 @@ public class Logica {
     if (!tabuleiro.get(linha).get(coluna).equals(Casa.VAZIA)) {
       throw new ExcecaoCasaPreenchida(tabuleiro.get(linha).get(coluna), linha, coluna);
     }
-    tabuleiro.get(linha).set(coluna, minhaPeca.equals(Peca.BRANCO) ? Casa.BRANCO : Casa.PRETO);
+    tabuleiro.get(linha).set(coluna, turno.equals(Peca.BRANCO) ? Casa.BRANCO : Casa.PRETO);
   }
 
   public void retirarPeca(int linha, int coluna) {

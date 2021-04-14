@@ -89,6 +89,9 @@ public class Tabuleiro extends Actor implements Observador {
           int linha = (int) Math.ceil(x / 79);
           int coluna = (int) Math.ceil(y / 79);
           jogo.estado.clicouBotaoEsquerdo(linha - 1, coluna - 1);
+
+          Mensagem mensagem = new Mensagem(linha - 1, coluna - 1, "E");
+          jogo.comunicacao.enviarMensagem(mensagem.mensagemBruta);
         }
       }
     };
@@ -113,6 +116,8 @@ public class Tabuleiro extends Actor implements Observador {
   public void reagir(String tipoDeEvento, Mensagem mensagem) {
     if (tipoDeEvento.equals("receberTurno")) {
       jogo.estado.receberTurno();
+    } else if (tipoDeEvento.equals("clicouBotaoEsquerdoMouse")) {
+      jogo.estado.clicouBotaoEsquerdo(mensagem.linha, mensagem.coluna);
     }
   }
 }
