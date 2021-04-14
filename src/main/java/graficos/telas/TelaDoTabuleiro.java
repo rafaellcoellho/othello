@@ -9,7 +9,6 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import graficos.*;
 import graficos.componentes.*;
-import logica.Observador;
 
 public class TelaDoTabuleiro extends ScreenAdapter {
 
