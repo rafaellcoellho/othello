@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import graficos.Othello;
 import logica.Logica;
+import rede.Mensagem;
 import utilitarios.Observador;
 
 public class BotaoDePassarTurno extends TextButton implements Observador {
@@ -48,4 +49,7 @@ public class BotaoDePassarTurno extends TextButton implements Observador {
       }
     }
   }
+
+  @Override
+  public void reagir(String tipoDeEvento, Mensagem mensagem) {}
 }

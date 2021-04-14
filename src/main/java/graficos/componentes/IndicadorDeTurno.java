@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import graficos.PaletaDeCores;
 import logica.Logica;
+import rede.Mensagem;
 import utilitarios.Observador;
 
 public class IndicadorDeTurno extends Table implements Observador {
@@ -53,4 +54,7 @@ public class IndicadorDeTurno extends Table implements Observador {
       }
     }
   }
+
+  @Override
+  public void reagir(String tipoDeEvento, Mensagem mensagem) {}
 }

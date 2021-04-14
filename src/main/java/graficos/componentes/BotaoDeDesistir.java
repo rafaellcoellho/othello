@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import logica.Logica;
+import rede.Mensagem;
 import utilitarios.Observador;
 
 public class BotaoDeDesistir extends TextButton implements Observador {
@@ -52,4 +53,7 @@ public class BotaoDeDesistir extends TextButton implements Observador {
       setDisabled(!estado.ehMeuTurno());
     }
   }
+
+  @Override
+  public void reagir(String tipoDeEvento, Mensagem mensagem) {}
 }

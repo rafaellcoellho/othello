@@ -1,6 +1,7 @@
 package utilitarios;
 
 import logica.Logica;
+import rede.Mensagem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +32,13 @@ public class Eventos {
     List<Observador> componentes = observadores.get(evento);
     for (Observador observador : componentes) {
       observador.reagir(evento, jogo);
+    }
+  }
+
+  public void notificarObservadores(String evento, Mensagem mensagem) {
+    List<Observador> componentes = observadores.get(evento);
+    for (Observador observador : componentes) {
+      observador.reagir(evento, mensagem);
     }
   }
 }

@@ -1,5 +1,8 @@
 package rede;
 
+import utilitarios.Eventos;
+import utilitarios.Observador;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
@@ -18,10 +21,12 @@ public class Comunicacao extends Thread {
   private DataInputStream streamDeEntrada;
   private final String enderecoIp;
   private final Integer porta;
+  public Eventos eventos;
 
   public Comunicacao(Papel papel, String enderecoIp, Integer porta) {
     this.enderecoIp = enderecoIp;
     this.porta = porta;
+    eventos = new Eventos("mensagemRecebida");
 
     if (papel.equals(Papel.SERVIDOR)) {
       try {
@@ -69,6 +74,9 @@ public class Comunicacao extends Thread {
       while (!Thread.currentThread().isInterrupted()) {
         mensagemRecebida = streamDeEntrada.readUTF();
         Mensagem mensagemFormatada = new Mensagem(mensagemRecebida);
+        if (mensagemFormatada.tipo.equals("CHAT")) {
+          eventos.notificarObservadores("mensagemRecebida", mensagemFormatada);
+        }
       }
     } catch (Exception e) {
       e.printStackTrace();
