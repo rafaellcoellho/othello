@@ -100,11 +100,40 @@ public class Logica {
     }
   }
 
-  public boolean houveVencedor() {
-    return false;
+  public boolean jogoAcabou() {
+    Integer contador = 0;
+
+    for (int linha = 0; linha < 8; linha++) {
+      for (int coluna = 0; coluna < 8; coluna++) {
+        if (!tabuleiro.get(linha).get(coluna).equals(Casa.VAZIA)) {
+          contador++;
+        }
+      }
+    }
+
+    return contador.equals(64);
   }
 
-  public Peca vencedor() {
-    return minhaPeca;
+  public String vencedor() {
+    int pecasBrancas = 0;
+    int pecasPretas = 0;
+
+    for (int linha = 0; linha < 8; linha++) {
+      for (int coluna = 0; coluna < 8; coluna++) {
+        if (tabuleiro.get(linha).get(coluna).equals(Casa.BRANCO)) {
+          pecasBrancas++;
+        } else if (tabuleiro.get(linha).get(coluna).equals(Casa.PRETO)) {
+          pecasPretas++;
+        }
+      }
+    }
+
+    if (pecasBrancas > pecasPretas) {
+      return "Branco";
+    } else if (pecasBrancas < pecasPretas){
+      return "Preto";
+    }
+
+    return "Empate";
   }
 }
