@@ -32,7 +32,7 @@ public class TelaDoTabuleiro extends ScreenAdapter {
 
     tabuleiro = new Tabuleiro(jogo);
 
-    botaoDePassarTurno = new BotaoDePassarTurno(jogo.estilo);
+    botaoDePassarTurno = new BotaoDePassarTurno(jogo);
     botaoDeDesistir = new BotaoDeDesistir(jogo.estilo, cena);
     deQuemEhOTurno = new IndicadorDeTurno(jogo.estilo);
     chat = new Chat(jogo.estilo);
