@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import graficos.Othello;
 import graficos.PaletaDeCores;
+import logica.Logica;
 
 public class TelaFinal extends ScreenAdapter {
 
@@ -21,7 +22,8 @@ public class TelaFinal extends ScreenAdapter {
   private final TextButton botaoDeEncerrarJogo;
   private final Label mensagemFinal;
 
-  public TelaFinal(Othello jogo, OrthographicCamera camera, Stage cena, boolean vencedor) {
+  public TelaFinal(
+      Othello jogo, OrthographicCamera camera, Stage cena, String vencedor, boolean desistencia) {
     this.jogo = jogo;
     this.camera = camera;
     this.cena = cena;
@@ -29,10 +31,21 @@ public class TelaFinal extends ScreenAdapter {
     botaoDeEncerrarJogo = new TextButton("Encerrar", jogo.estilo, "sucesso");
     botaoDeEncerrarJogo.addListener(fecharJogo());
 
-    if (vencedor) {
-      mensagemFinal = new Label("Parabens. Otima partida!", jogo.estilo, "vermelho");
+    if (!vencedor.equals("")) {
+      if (vencedor.equals("Branco") && jogo.estado.minhaPeca.equals(Logica.Peca.BRANCO)
+          || vencedor.equals("Preto") && jogo.estado.minhaPeca.equals(Logica.Peca.PRETO)) {
+        mensagemFinal = new Label("Parabens. Otima partida!", jogo.estilo, "azul");
+      } else if (vencedor.equals("Empate")) {
+        mensagemFinal = new Label("Empate. Otima partida!", jogo.estilo, "azul");
+      } else {
+        mensagemFinal = new Label("Voce perdeu. Ate a proxima partida!", jogo.estilo, "vermelho");
+      }
     } else {
-      mensagemFinal = new Label("Voce perdeu. Ate a proxima partida!", jogo.estilo, "azul");
+      if (desistencia) {
+        mensagemFinal = new Label("Parabens. Otima partida!", jogo.estilo, "azul");
+      } else {
+        mensagemFinal = new Label("Voce perdeu. Ate a proxima partida!", jogo.estilo, "vermelho");
+      }
     }
 
     cena.clear();

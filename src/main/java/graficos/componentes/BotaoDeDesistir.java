@@ -45,7 +45,7 @@ public class BotaoDeDesistir extends TextButton implements Observador {
                   jogo.comunicacao.enviarMensagem(mensagem.mensagemBruta);
 
                   cena.clear();
-                  jogo.setScreen(new TelaFinal(jogo, camera, cena, false));
+                  jogo.setScreen(new TelaFinal(jogo, camera, cena, "",false));
                 }
               }
             };
@@ -70,7 +70,7 @@ public class BotaoDeDesistir extends TextButton implements Observador {
     if (tipoDeEvento.equals("receberTurno")) {
       setDisabled(false);
     } else if (tipoDeEvento.equals("desistencia")) {
-      jogo.setScreen(new TelaFinal(jogo, camera, cena, true));
+      jogo.setScreen(new TelaFinal(jogo, camera, cena, "", true));
     }
   }
 }
