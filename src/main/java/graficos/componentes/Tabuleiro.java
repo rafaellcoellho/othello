@@ -1,5 +1,6 @@
 package graficos.componentes;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -8,18 +9,22 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import graficos.Othello;
 import graficos.PaletaDeCores;
+import logica.Logica;
 
 public class Tabuleiro extends Actor {
 
   private final int LADO_QUADRADO = 79;
-  private final int RAIO_CIRCULO = 25;
+  private final int RAIO_CIRCULO = 30;
   private final ShapeRenderer renderer;
+  private final Othello jogo;
 
   public Tabuleiro(Othello jogo) {
+    this.jogo = jogo;
     renderer = jogo.shapeRenderer;
     setWidth(LADO_QUADRADO * 8);
     setHeight(LADO_QUADRADO * 8);
-    addListener(clicouNoTabuleiro());
+    addListener(clicouNoTabuleiroBotaoEsquerdo());
+    addListener(clicouNoTabuleiroBotaoDireito());
   }
 
   @Override
@@ -36,6 +41,12 @@ public class Tabuleiro extends Actor {
         float x = linha * LADO_QUADRADO;
         float y = coluna * LADO_QUADRADO;
         desenharQuadrado(x, y, pegarCorDoQuadrado(linha, coluna));
+
+        if (!jogo.estado.tabuleiro.get(linha).get(coluna).equals(Logica.Casa.VAZIA)) {
+          float xCentroQuadrado = x + (float) (LADO_QUADRADO / 2);
+          float yCentroQuadrado = y + (float) (LADO_QUADRADO / 2);
+          desenharCirculo(xCentroQuadrado, yCentroQuadrado, pegarCorDaPeca(linha, coluna));
+        }
       }
     }
     renderer.end();
@@ -54,6 +65,11 @@ public class Tabuleiro extends Actor {
     return colunaEhPar ? PaletaDeCores.VERDE_CONTRASTE.cor : PaletaDeCores.VERDE.cor;
   }
 
+  private Color pegarCorDaPeca(int linha, int coluna) {
+    Logica.Casa peca = jogo.estado.tabuleiro.get(linha).get(coluna);
+    return peca.equals(Logica.Casa.PRETO) ? PaletaDeCores.PRETO.cor : PaletaDeCores.BRANCO.cor;
+  }
+
   private void desenharQuadrado(float x, float y, Color cor) {
     renderer.setColor(cor);
     renderer.rect(x, y, LADO_QUADRADO, LADO_QUADRADO);
@@ -64,12 +80,24 @@ public class Tabuleiro extends Actor {
     renderer.circle(x, y, RAIO_CIRCULO);
   }
 
-  private ClickListener clicouNoTabuleiro() {
-    return new ClickListener() {
+  private ClickListener clicouNoTabuleiroBotaoEsquerdo() {
+    return new ClickListener(Input.Buttons.LEFT) {
       public void clicked(InputEvent event, float x, float y) {
-        int linha = (int) Math.ceil(y/79);
-        int coluna = (int) Math.ceil(x/79);
+        int linha = (int) Math.ceil(x / 79);
+        int coluna = (int) Math.ceil(y / 79);
         System.out.printf("X: %f | Y: %f | Linha: %d | Coluna: %d\n", x, y, linha, coluna);
+        jogo.estado.clicouBotaoEsquerdo(linha-1, coluna-1);
+      }
+    };
+  }
+
+  private ClickListener clicouNoTabuleiroBotaoDireito() {
+    return new ClickListener(Input.Buttons.RIGHT) {
+      public void clicked(InputEvent event, float x, float y) {
+        int linha = (int) Math.ceil(x / 79);
+        int coluna = (int) Math.ceil(y / 79);
+        System.out.printf("X: %f | Y: %f | Linha: %d | Coluna: %d\n", x, y, linha, coluna);
+        jogo.estado.clicouBotaoDireito(linha-1, coluna-1);
       }
     };
   }
