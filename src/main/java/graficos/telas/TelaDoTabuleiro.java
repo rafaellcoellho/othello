@@ -34,7 +34,7 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     tabuleiro = new Tabuleiro(jogo);
 
     botaoDePassarTurno = new BotaoDePassarTurno(jogo);
-    botaoDeDesistir = new BotaoDeDesistir(jogo.estilo, cena);
+    botaoDeDesistir = new BotaoDeDesistir(jogo, cena);
     deQuemEhOTurno = new IndicadorDeTurno(jogo.estilo);
     chat = new Chat(jogo);
 
@@ -52,6 +52,7 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     jogo.comunicacao.eventos.adicionarObservador("receberTurno", tabuleiro);
     jogo.comunicacao.eventos.adicionarObservador("clicouBotaoEsquerdoMouse", tabuleiro);
     jogo.comunicacao.eventos.adicionarObservador("clicouBotaoDireitoMouse", tabuleiro);
+    jogo.comunicacao.eventos.adicionarObservador("desistencia", botaoDeDesistir);
 
     construirLayout();
   }
@@ -97,6 +98,7 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     jogo.comunicacao.eventos.removerObservador("receberTurno", tabuleiro);
     jogo.comunicacao.eventos.removerObservador("clicouBotaoEsquerdoMouse", tabuleiro);
     jogo.comunicacao.eventos.removerObservador("clicouBotaoDireitoMouse", tabuleiro);
+    jogo.comunicacao.eventos.removerObservador("desistencia", botaoDeDesistir);
 
     cena.dispose();
   }

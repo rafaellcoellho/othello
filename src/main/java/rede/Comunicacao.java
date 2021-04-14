@@ -26,7 +26,13 @@ public class Comunicacao extends Thread {
   public Comunicacao(Papel papel, String enderecoIp, Integer porta) {
     this.enderecoIp = enderecoIp;
     this.porta = porta;
-    eventos = new Eventos("mensagemRecebida", "receberTurno", "clicouBotaoEsquerdoMouse", "clicouBotaoDireitoMouse");
+    eventos =
+        new Eventos(
+            "mensagemRecebida",
+            "receberTurno",
+            "clicouBotaoEsquerdoMouse",
+            "clicouBotaoDireitoMouse",
+            "desistencia");
 
     if (papel.equals(Papel.SERVIDOR)) {
       try {
@@ -96,6 +102,8 @@ public class Comunicacao extends Thread {
               eventos.notificarObservadores("clicouBotaoDireitoMouse", mensagemFormatada);
             }
             break;
+          case "DESI":
+            eventos.notificarObservadores("desistencia", mensagemFormatada);
         }
       }
     } catch (Exception e) {
