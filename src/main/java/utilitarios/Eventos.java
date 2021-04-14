@@ -1,4 +1,6 @@
-package logica;
+package utilitarios;
+
+import logica.Logica;
 
 import java.util.ArrayList;
 import java.util.HashMap;

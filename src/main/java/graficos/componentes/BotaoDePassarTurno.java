@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import graficos.Othello;
 import logica.Logica;
-import logica.Observador;
+import utilitarios.Observador;
 
 public class BotaoDePassarTurno extends TextButton implements Observador {
 

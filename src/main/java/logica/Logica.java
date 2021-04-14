@@ -1,5 +1,7 @@
 package logica;
 
+import utilitarios.Eventos;
+
 import java.util.ArrayList;
 
 public class Logica {

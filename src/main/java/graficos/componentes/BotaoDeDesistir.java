@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import logica.Logica;
-import logica.Observador;
+import utilitarios.Observador;
 
 public class BotaoDeDesistir extends TextButton implements Observador {
 
@@ -28,14 +28,15 @@ public class BotaoDeDesistir extends TextButton implements Observador {
         TextButton confirmar = new TextButton("Sim", estilo, "perigo");
         TextButton voltar = new TextButton("Voltar", estilo, "default");
 
-        Dialog janelaDeConfirmacao = new Dialog("Desistir", estilo, "dialog") {
-          protected void result(Object resposta) {
-            boolean desistiu = (boolean) resposta;
-            if (desistiu) {
-              System.out.println("Desistir... tururu");
-            }
-          }
-        };
+        Dialog janelaDeConfirmacao =
+            new Dialog("Desistir", estilo, "dialog") {
+              protected void result(Object resposta) {
+                boolean desistiu = (boolean) resposta;
+                if (desistiu) {
+                  System.out.println("Desistir... tururu");
+                }
+              }
+            };
 
         janelaDeConfirmacao.text(mensagem);
         janelaDeConfirmacao.button(confirmar, true);

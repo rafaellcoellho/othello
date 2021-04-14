@@ -1,4 +1,6 @@
-package logica;
+package utilitarios;
+
+import logica.Logica;
 
 public interface Observador {
 
