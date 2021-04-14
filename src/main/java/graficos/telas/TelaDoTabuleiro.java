@@ -51,6 +51,7 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     jogo.comunicacao.eventos.adicionarObservador("receberTurno", botaoDePassarTurno);
     jogo.comunicacao.eventos.adicionarObservador("receberTurno", tabuleiro);
     jogo.comunicacao.eventos.adicionarObservador("clicouBotaoEsquerdoMouse", tabuleiro);
+    jogo.comunicacao.eventos.adicionarObservador("clicouBotaoDireitoMouse", tabuleiro);
 
     construirLayout();
   }
@@ -95,6 +96,7 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     jogo.comunicacao.eventos.removerObservador("receberTurno", botaoDePassarTurno);
     jogo.comunicacao.eventos.removerObservador("receberTurno", tabuleiro);
     jogo.comunicacao.eventos.removerObservador("clicouBotaoEsquerdoMouse", tabuleiro);
+    jogo.comunicacao.eventos.removerObservador("clicouBotaoDireitoMouse", tabuleiro);
 
     cena.dispose();
   }
