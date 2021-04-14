@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import graficos.*;
 import graficos.componentes.*;
+import logica.Observador;
 
 public class TelaDoTabuleiro extends ScreenAdapter {
 
@@ -36,6 +37,8 @@ public class TelaDoTabuleiro extends ScreenAdapter {
     botaoDeDesistir = new BotaoDeDesistir(jogo.estilo, cena);
     deQuemEhOTurno = new IndicadorDeTurno(jogo.estilo);
     chat = new Chat(jogo.estilo);
+
+    jogo.estado.eventos.adicionarObservador("passarTurno", deQuemEhOTurno);
 
     construirLayout();
   }

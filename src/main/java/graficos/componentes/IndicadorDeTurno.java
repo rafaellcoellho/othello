@@ -4,8 +4,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import graficos.PaletaDeCores;
+import logica.Logica;
+import logica.Observador;
 
-public class IndicadorDeTurno extends Table {
+public class IndicadorDeTurno extends Table implements Observador {
 
   private final Label setaJogador;
   private final Label setaOponente;
@@ -39,5 +41,16 @@ public class IndicadorDeTurno extends Table {
     jogador.setColor(PaletaDeCores.BRANCO.cor);
     setaOponente.setVisible(true);
     oponente.setColor(PaletaDeCores.AZUL.cor);
+  }
+
+  @Override
+  public void reagir(String tipoDeEvento, Logica estado) {
+    if (tipoDeEvento.equals("passarTurno")) {
+      if (estado.ehMeuTurno()) {
+        selecionaTurnoDoJogador();
+      } else {
+        selecionaTurnoDoOponente();
+      }
+    }
   }
 }
