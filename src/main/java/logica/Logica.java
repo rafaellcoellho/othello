@@ -18,10 +18,12 @@ public class Logica {
   public ArrayList<ArrayList<Casa>> tabuleiro;
   private Peca turno;
   private final Peca minhaPeca;
+  public Eventos eventos;
 
   public Logica(Peca minhaPeca) {
     turno = Peca.PRETO; // Preto sempre começa
     this.minhaPeca = minhaPeca;
+    eventos = new Eventos("passarTurno");
 
     tabuleiro = new ArrayList<>(8);
     for (int linha = 0; linha < 8; linha++) {
@@ -45,6 +47,7 @@ public class Logica {
       throw new ExcecaoNaoPodePassarTurno(minhaPeca);
     }
     turno = turno.equals(Peca.BRANCO) ? Peca.PRETO : Peca.BRANCO;
+    eventos.notificarObservadores("passarTurno", this);
   }
 
   public boolean ehMeuTurno() {
