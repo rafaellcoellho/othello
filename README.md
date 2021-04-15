@@ -4,7 +4,10 @@ Implementação do jogo othello usando a biblioteca libGDX.
 
 <p align="center">
 	<a href="">
-		<img alt="Jogo" src="docs/img.png" width="200px">
+		<img alt="menu inicial" src="jogo.png" width="400px">
+	</a>
+    <a href="">
+		<img alt="Jogo" src="menu.png" width="400px">
 	</a>
 </p>
 
