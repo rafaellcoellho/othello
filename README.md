@@ -7,8 +7,8 @@ no IFCE do semestre 2021.1.
 O objetivo era utilizar [sockets](https://en.wikipedia.org/wiki/Berkeley_sockets) para implementar a comunicação
 peer-to-peer entre os aplicativos clientes.
 
-Como o foco era a comunicação entre aplicativos, as regras do jogo não foram implementadas, cada jogador pode adicionar,
-virar ou remover qualquer peça. Outro requisito do trabalho era o chat, sistema de passagem de turno, desistência e
+Como o foco era a comunicação entre aplicativos, as regras do jogo não foram implementadas. Cada jogador pode adicionar,
+virar ou remover qualquer peça. Outros requisitos do trabalho eram o chat, sistema de passagem de turno, desistência e
 checagem do vencedor.
 
 <p align="center">
