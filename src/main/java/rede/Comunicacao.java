@@ -14,18 +14,14 @@ public class Comunicacao extends Thread {
     CLIENTE
   }
 
-  private ServerSocket socketDeServidor;
-  private Socket socket;
-  private DataOutputStream streamDeSaida;
-  private DataInputStream streamDeEntrada;
   private final String enderecoIp;
-  private final Integer porta;
+  private final String nomeServico;
   private final Papel papel;
   public Eventos eventos;
 
-  public Comunicacao(Papel papel, String enderecoIp, Integer porta) {
+  public Comunicacao(Papel papel, String enderecoIp, String nomeServico) {
     this.enderecoIp = enderecoIp;
-    this.porta = porta;
+    this.nomeServico = nomeServico;
     this.papel = papel;
     eventos =
         new Eventos(
@@ -38,7 +34,7 @@ public class Comunicacao extends Thread {
 
     if (papel.equals(Papel.SERVIDOR)) {
       try {
-        socketDeServidor = new ServerSocket(porta);
+        System.out.println("TODO: Criar servidor de nomes e registrar obj do servidor nele");
       } catch (Exception e) {
         e.printStackTrace();
       }
@@ -49,9 +45,7 @@ public class Comunicacao extends Thread {
 
   public void esperarConexao() {
     try {
-      socket = socketDeServidor.accept();
-      streamDeEntrada = new DataInputStream(socket.getInputStream());
-      streamDeSaida = new DataOutputStream(socket.getOutputStream());
+      System.out.println("TODO: Esperar evento de conexão");
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -59,9 +53,7 @@ public class Comunicacao extends Thread {
 
   public void conectar() {
     try {
-      socket = new Socket(enderecoIp, porta);
-      streamDeEntrada = new DataInputStream(socket.getInputStream());
-      streamDeSaida = new DataOutputStream(socket.getOutputStream());
+      System.out.println("TODO: Recuperar obj remoto do oponente");
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -69,8 +61,7 @@ public class Comunicacao extends Thread {
 
   public void enviarMensagem(String mensagem) {
     try {
-      streamDeSaida.writeUTF(mensagem);
-      streamDeSaida.flush();
+      System.out.println("TODO: Chamar função de mensagem do oponente");
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -78,7 +69,7 @@ public class Comunicacao extends Thread {
 
   public void encerrarConexao() {
     try {
-      socket.close();
+      System.out.println("TODO: Encerrar conexão com obj remoto");
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -94,7 +85,8 @@ public class Comunicacao extends Thread {
       }
       eventos.notificarObservadores("conectou", new Mensagem("CONE", ""));
       while (!Thread.currentThread().isInterrupted()) {
-        mensagemRecebida = streamDeEntrada.readUTF();
+        mensagemRecebida = "";
+        System.out.println("TODO: Receber mensagem");
         Mensagem mensagemFormatada = new Mensagem(mensagemRecebida);
         switch (mensagemFormatada.tipo) {
           case "CHAT":
