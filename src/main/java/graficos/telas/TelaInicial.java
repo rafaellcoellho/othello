@@ -48,8 +48,8 @@ public class TelaInicial extends ScreenAdapter {
 
     enderecoIpLabel = new Label("Endereco IP:", jogo.estilo);
     enderecoIp = new TextField("localhost", jogo.estilo);
-    portaLabel = new Label("Porta:", jogo.estilo);
-    porta = new TextField("9090", jogo.estilo);
+    portaLabel = new Label("Nome Servico:", jogo.estilo);
+    porta = new TextField("othello", jogo.estilo);
 
     construirLayout();
   }
@@ -80,10 +80,7 @@ public class TelaInicial extends ScreenAdapter {
       public void changed(ChangeEvent event, Actor actor) {
         cena.clear();
         jogo.comunicacao =
-            new Comunicacao(
-                Comunicacao.Papel.SERVIDOR,
-                enderecoIp.getText(),
-                Integer.parseInt(porta.getText()));
+            new Comunicacao(Comunicacao.Papel.SERVIDOR, enderecoIp.getText(), porta.getText());
         jogo.estado = new Logica(Logica.Peca.PRETO);
 
         jogo.setScreen(new TelaDeEspera(jogo, camera, cena));
@@ -96,10 +93,7 @@ public class TelaInicial extends ScreenAdapter {
       public void changed(ChangeEvent event, Actor actor) {
         cena.clear();
         jogo.comunicacao =
-            new Comunicacao(
-                Comunicacao.Papel.CLIENTE,
-                enderecoIp.getText(),
-                Integer.parseInt(porta.getText()));
+            new Comunicacao(Comunicacao.Papel.CLIENTE, enderecoIp.getText(), porta.getText());
         jogo.estado = new Logica(Logica.Peca.BRANCO);
         jogo.setScreen(new TelaDoTabuleiro(jogo, camera, cena));
       }
