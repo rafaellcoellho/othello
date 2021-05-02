@@ -3,7 +3,6 @@ package rede;
 import utilitarios.Eventos;
 
 import java.rmi.Naming;
-import java.rmi.registry.LocateRegistry;
 
 public class Comunicacao {
 
@@ -29,9 +28,9 @@ public class Comunicacao {
       Jogo objetoLocalJogador = new Jogo(this);
       if (papel.equals(Papel.SERVIDOR)) {
         // TODO: Rodar rmiregistry
-        Naming.rebind("//localhost/InverterRef", objetoLocalJogador);
+        Naming.rebind(String.format("//%s/%s", enderecoIp, nomeServico), objetoLocalJogador);
       } else {
-        objetoRemotoOponente = (Comandos) Naming.lookup("//localhost/InverterRef");
+        objetoRemotoOponente = (Comandos) Naming.lookup(String.format("//%s/%s", enderecoIp, nomeServico));
         objetoRemotoOponente.passarObjetoLocalParaOponente(objetoLocalJogador);
         objetoRemotoOponente.anunciarConexao();
       }
