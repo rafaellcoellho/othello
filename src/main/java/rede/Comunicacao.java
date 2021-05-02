@@ -32,7 +32,7 @@ public class Comunicacao {
         Registry servidorDeNomes = LocateRegistry.createRegistry(1099);
         servidorDeNomes.bind(nomeServico, objetoLocalJogador);
       } else {
-        objetoRemotoOponente = (Comandos) Naming.lookup(String.format("//%s/%s", enderecoIp, nomeServico));
+        objetoRemotoOponente = (Comandos) Naming.lookup(String.format("//%s:1099/%s", enderecoIp, nomeServico));
         objetoRemotoOponente.passarObjetoLocalParaOponente(objetoLocalJogador);
         objetoRemotoOponente.anunciarConexao();
       }
