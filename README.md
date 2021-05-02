@@ -23,6 +23,11 @@ checagem do vencedor.
 	</a>
 </p>
 
+## RMI
+
+A segunda parte do trabalho exigia trocar a implementação em socket para [RMI](https://en.wikipedia.org/wiki/Java_remote_method_invocation).
+A branch `rmi` foi utilizada para esse propósito.
+
 ## Autor
 
 * **Rafael Coelho** - [rafaellcoellho](https://github.com/rafaellcoellho)
