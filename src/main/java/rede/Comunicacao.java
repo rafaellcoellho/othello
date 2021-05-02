@@ -2,22 +2,20 @@ package rede;
 
 import utilitarios.Eventos;
 
-public class Comunicacao extends Thread {
+import java.rmi.Naming;
+import java.rmi.registry.LocateRegistry;
+
+public class Comunicacao {
 
   public enum Papel {
     SERVIDOR,
     CLIENTE
   }
 
-  private final String enderecoIp;
-  private final String nomeServico;
-  private final Papel papel;
+  private Comandos objetoRemotoOponente;
   public Eventos eventos;
 
   public Comunicacao(Papel papel, String enderecoIp, String nomeServico) {
-    this.enderecoIp = enderecoIp;
-    this.nomeServico = nomeServico;
-    this.papel = papel;
     eventos =
         new Eventos(
             "mensagemRecebida",
@@ -27,28 +25,16 @@ public class Comunicacao extends Thread {
             "desistencia",
             "conectou");
 
-    if (papel.equals(Papel.SERVIDOR)) {
-      try {
-        System.out.println("TODO: Criar servidor de nomes e registrar obj do servidor nele");
-      } catch (Exception e) {
-        e.printStackTrace();
+    try {
+      Jogo objetoLocalJogador = new Jogo(this);
+      if (papel.equals(Papel.SERVIDOR)) {
+        // TODO: Rodar rmiregistry
+        Naming.rebind("//localhost/InverterRef", objetoLocalJogador);
+      } else {
+        objetoRemotoOponente = (Comandos) Naming.lookup("//localhost/InverterRef");
+        objetoRemotoOponente.passarObjetoLocalParaOponente(objetoLocalJogador);
+        objetoRemotoOponente.anunciarConexao();
       }
-    }
-
-    this.start();
-  }
-
-  public void esperarConexao() {
-    try {
-      System.out.println("TODO: Esperar evento de conexão");
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
-  public void conectar() {
-    try {
-      System.out.println("TODO: Recuperar obj remoto do oponente");
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -56,53 +42,13 @@ public class Comunicacao extends Thread {
 
   public void enviarMensagem(String mensagem) {
     try {
-      System.out.println("TODO: Chamar função de mensagem do oponente");
+      objetoRemotoOponente.receberMensagem(mensagem);
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
 
-  public void encerrarConexao() {
-    try {
-      System.out.println("TODO: Encerrar conexão com obj remoto");
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
-  public void run() {
-    String mensagemRecebida;
-    try {
-      if (papel.equals(Papel.SERVIDOR)) {
-        esperarConexao();
-      } else {
-        conectar();
-      }
-      eventos.notificarObservadores("conectou", new Mensagem("CONE", ""));
-      while (!Thread.currentThread().isInterrupted()) {
-        mensagemRecebida = "";
-        System.out.println("TODO: Receber mensagem");
-        Mensagem mensagemFormatada = new Mensagem(mensagemRecebida);
-        switch (mensagemFormatada.tipo) {
-          case "CHAT":
-            eventos.notificarObservadores("mensagemRecebida", mensagemFormatada);
-            break;
-          case "PROX":
-            eventos.notificarObservadores("receberTurno", mensagemFormatada);
-            break;
-          case "JOGO":
-            if (mensagemFormatada.botao.equals("E")) {
-              eventos.notificarObservadores("clicouBotaoEsquerdoMouse", mensagemFormatada);
-            } else if (mensagemFormatada.botao.equals("D")) {
-              eventos.notificarObservadores("clicouBotaoDireitoMouse", mensagemFormatada);
-            }
-            break;
-          case "DESI":
-            eventos.notificarObservadores("desistencia", mensagemFormatada);
-        }
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+  public void registrarObjetoDoOponente(Comandos objetoOponente) {
+    objetoRemotoOponente = objetoOponente;
   }
 }

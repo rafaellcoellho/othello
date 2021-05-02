@@ -68,7 +68,6 @@ public class TelaFinal extends ScreenAdapter {
       public void changed(ChangeEvent event, Actor actor) {
         Gdx.app.exit();
         System.exit(0);
-        jogo.comunicacao.encerrarConexao();
       }
     };
   }

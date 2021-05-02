@@ -35,6 +35,5 @@ public class Othello extends Game {
     fonte.dispose();
     estilo.dispose();
     shapeRenderer.dispose();
-    comunicacao.encerrarConexao();
   }
 }
